@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.438
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMovieStore", "OnlineMovieStore\OnlineMovieStore.csproj", "{F1CB8D0B-2954-44B1-8146-F29F093E3A4E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMovieStore", "OnlineMovieStore\OnlineMovieStore.csproj", "{A733A23A-58C5-417A-8D9F-351977100057}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F1CB8D0B-2954-44B1-8146-F29F093E3A4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F1CB8D0B-2954-44B1-8146-F29F093E3A4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F1CB8D0B-2954-44B1-8146-F29F093E3A4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F1CB8D0B-2954-44B1-8146-F29F093E3A4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A733A23A-58C5-417A-8D9F-351977100057}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A733A23A-58C5-417A-8D9F-351977100057}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A733A23A-58C5-417A-8D9F-351977100057}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A733A23A-58C5-417A-8D9F-351977100057}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {36ADE62C-9F33-47E7-B71A-DF9C39546104}
+		SolutionGuid = {B3C283CD-5486-4B66-9E9D-361791FF591F}
 	EndGlobalSection
 EndGlobal
