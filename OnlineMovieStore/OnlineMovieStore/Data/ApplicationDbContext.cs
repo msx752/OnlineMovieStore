@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using OnlineMovieStore.Data.Tables;
 
 namespace OnlineMovieStore.Data
 {
@@ -12,5 +13,16 @@ namespace OnlineMovieStore.Data
             : base(options)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Movie>()
+              .HasOne<MovieRating>(s => s.Rating)
+              .WithMany(g => g.Movies)
+              .HasForeignKey(s => s.RatingId);
+
+            modelBuilder.Seed();
+        }
+
     }
 }
