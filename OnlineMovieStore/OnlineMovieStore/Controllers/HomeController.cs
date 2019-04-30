@@ -27,6 +27,15 @@ namespace OnlineMovieStore.Controllers
             viewModel.RecentlyAdded = MovieRepo.GetAll().Take(4).ToList();
             return View("index", viewModel);
         }
+        public IActionResult HighRatings()
+        {
+            return View(MovieRepo.GetAll().Where(f => f.Rating.AverageRating >= 70).Take(5).ToList());
+        }
+        public IActionResult RecentlyAdded()
+        {
+            return View(MovieRepo.GetAll().Take(4).ToList());
+        }
+
         public IActionResult ViewDetail()
         {
             return View();
