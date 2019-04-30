@@ -1,26 +1,7 @@
-﻿@model OnlineMovieStore.Models.MovieViewModel
+﻿@model OnlineMovieStore.Models.IndexViewModel
 @{
     ViewData["Title"] = "Online Movie Store";
-}
 
-@functions{
-
-    public Microsoft.AspNetCore.Html.IHtmlContent DrawStars(OnlineMovieStore.Data.Tables.Rating rating)
-    {
-        string html = "";
-        var star = Math.Round(((rating.AverageRating / 100) / 2) * 10);
-        for (int i = 1; i <= 5; i++)
-        {
-            string IsChecked = "";
-            if (star <= i && star != 0)
-            {
-                IsChecked = "star-checked";
-            }
-            html += $"<span class=\"fa fa-star {IsChecked}\"></span>";
-        }
-
-        return Html.Raw(html);
-    }
 }
 <section class="highratings" id="highratings">
     <h2>High Ratings</h2>
@@ -37,7 +18,7 @@
                             <div class="img-card">
                                 <img src="~/img/@(item.Id).png" alt="@(item.Title)" class="w-100" />
                                 <div class="average-rating rounded">
-                                    @DrawStars(item.Rating)
+                                    @Html.DrawStars(item.Rating)
                                 </div>
                                 <div class="view-detail" style="display:none;">
                                     <button class="btn btn-sm btn-danger btn-block"><i class="fa fa-eye"></i> View Detail</button>
@@ -66,7 +47,7 @@
                             <div class="img-card">
                                 <img src="~/img/@(item.Id).png" alt="@(item.Title)" class="w-100" />
                                 <div class="average-rating rounded">
-                                    @DrawStars(item.Rating)
+                                    @Html.DrawStars(item.Rating)
                                 </div>
                                 <div class="view-detail" style="display:none;">
                                     <button class="btn btn-sm btn-danger btn-block"><i class="fa fa-eye"></i> View Detail</button>
@@ -96,7 +77,7 @@
                                 <div class="img-card">
                                     <img src="~/img/@(item.Id).png" alt="@(item.Title)" class="w-100" />
                                     <div class="average-rating rounded">
-                                        @DrawStars(item.Rating)
+                                        @Html.DrawStars(item.Rating)
                                     </div>
                                     <div class="view-detail" style="display:none;">
                                         <button class="btn btn-sm btn-danger btn-block"><i class="fa fa-eye"></i> View Detail</button>

@@ -15,8 +15,9 @@ namespace OnlineMovieStore.Repositories
         {
             _context = context;
         }
-        public Movie Get(string id)
+        public Movie Get(object _id)
         {
+            var id = _id.ToString();
             return _context.Movies
                 .Include(f=>f.Categories)
                 .Include(f=>f.Rating)

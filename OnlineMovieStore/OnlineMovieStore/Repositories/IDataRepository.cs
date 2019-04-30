@@ -8,7 +8,7 @@ namespace OnlineMovieStore.Repositories
     public interface IDataRepository<TEntity>
     {
         IEnumerable<TEntity> GetAll();
-        TEntity Get(string id);
+        TEntity Get(object _id);
         void Update(TEntity dbEntity, TEntity newEntity);
     }
 }

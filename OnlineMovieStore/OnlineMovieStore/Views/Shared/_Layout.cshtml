@@ -1,4 +1,26 @@
-﻿<!DOCTYPE html>
+﻿@inject OnlineMovieStore.Repositories.IDataRepository<OnlineMovieStore.Data.Tables.Category> catRepo
+
+
+@functions{
+
+    public Microsoft.AspNetCore.Html.IHtmlContent DrawStars(OnlineMovieStore.Data.Tables.Rating rating)
+    {
+        string html = "";
+        var star = Math.Round(((rating.AverageRating / 100) / 2) * 10);
+        for (int i = 1; i <= 5; i++)
+        {
+            string IsChecked = "";
+            if (star <= i && star != 0)
+            {
+                IsChecked = "star-checked";
+            }
+            html += $"<span class=\"fa fa-star {IsChecked}\"></span>";
+        }
+
+        return Html.Raw(html);
+    }
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -17,7 +39,7 @@
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
     </environment>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css" />
-   
+
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
@@ -35,8 +57,21 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">
+                                Categories
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                @{
+                                    var ls = catRepo.GetAll();
+                                    foreach (var item in ls)
+                                    {
+                                        <li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Filtered" asp-route-id="@(item.Id)">@(item.Name)</a></li>
+                                    }
+                                }
+
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -45,7 +80,7 @@
     </header>
     <div class="container">
         <partial name="_CookieConsentPartial" />
-            @RenderBody()
+        @RenderBody()
     </div>
 
     <footer class="border-top footer text-muted">

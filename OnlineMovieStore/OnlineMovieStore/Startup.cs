@@ -44,6 +44,7 @@ namespace OnlineMovieStore
             //dependency injections
             //services.AddScoped<ApplicationDbContext>();
             services.AddScoped<IDataRepository<Movie>, MovieManager>();
+            services.AddScoped<IDataRepository<Category>, CategoryManager>();
 
             services.AddControllersWithViews()
                 .AddNewtonsoftJson();
