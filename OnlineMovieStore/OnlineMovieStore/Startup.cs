@@ -12,6 +12,8 @@ using OnlineMovieStore.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OnlineMovieStore.Data.Tables;
+using OnlineMovieStore.Repositories;
 
 namespace OnlineMovieStore
 {
@@ -39,9 +41,15 @@ namespace OnlineMovieStore
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            //dependency injections
+            //services.AddScoped<ApplicationDbContext>();
+            services.AddScoped<IDataRepository<Movie>, MovieManager>();
+
             services.AddControllersWithViews()
                 .AddNewtonsoftJson();
             services.AddRazorPages();
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
