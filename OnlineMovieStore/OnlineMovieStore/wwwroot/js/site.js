@@ -1,4 +1,19 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿$(".card-block").mouseover(function () {
+    console.log("show");
+    viewDetail = GetViewDetailDiv(this);
+    viewDetail.style.display = "block";
 
-// Write your JavaScript code.
+});
+
+$(".card-block").mouseout(function () {
+    console.log("hide");
+    viewDetail = GetViewDetailDiv(this);
+    viewDetail.style.display = "none";
+
+})
+
+function GetViewDetailDiv(node) {
+
+    return node.getElementsByClassName("view-detail")[0];
+
+}

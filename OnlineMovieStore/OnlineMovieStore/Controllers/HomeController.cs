@@ -19,11 +19,7 @@ namespace OnlineMovieStore.Controllers
         }
         public IActionResult Index()
         {
-            if (this.User.Identity.IsAuthenticated)
-            {
-                return View(MovieRepo.GetAll());
-            }
-            return View();
+            return View(MovieRepo.GetAll());
         }
 
         public IActionResult Privacy()

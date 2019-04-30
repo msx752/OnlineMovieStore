@@ -1,8 +1,34 @@
-﻿@{
+﻿@model List<OnlineMovieStore.Data.Tables.Movie>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+<section class="movies" id="movies">
+    <h2>Movies</h2>
+    <div class="row">
+        @{
+
+            foreach (var item in Model)
+            {
+
+                <div class="col-sm-2 hvr-shadow-radial">
+                    <article class="card">
+                        <header class="title-header">
+                                    <h3>@(item.Title)</h3>
+                        </header>
+                        <div class="card-block">
+                            <div class="img-card">
+                                <img src="~/img/@(item.Id).png" alt="Movie" class="w-100" />
+                                <div class="view-detail" style="display:none;">
+                                    <button class="btn btn-primary btn-block"><i class="fa fa-eye"></i> View Detail</button>
+                                </div>
+                                @*<a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> View Detail</a>*@
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            }
+        }
+    </div>
+</section>
