@@ -6,9 +6,16 @@
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Prefer32Bit>false</Prefer32Bit>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="Data\Migrations\20190430145802_movieCategory_ManyToMany.cs" />
     <Compile Remove="Data\Migrations\20190430145802_movieCategory_ManyToMany.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190430153310_seedtest1.cs" />
+    <Compile Remove="Data\Migrations\20190430153310_seedtest1.Designer.cs" />
   </ItemGroup>
 
 

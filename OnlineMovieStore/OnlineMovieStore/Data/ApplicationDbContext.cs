@@ -20,8 +20,12 @@ namespace OnlineMovieStore.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+        
         }
-
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+           
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Rating>().HasKey(f => f.Id);
@@ -71,7 +75,9 @@ namespace OnlineMovieStore.Data
              .WithMany(g => g.MovieWriters)
              .HasForeignKey(s => s.WriterId);
             //
-            modelBuilder.Seed();
+            modelBuilder.SeedCategories();
+            modelBuilder.SeedDirectors();
+            modelBuilder.SeedWriters();
             base.OnModelCreating(modelBuilder);
         }
 

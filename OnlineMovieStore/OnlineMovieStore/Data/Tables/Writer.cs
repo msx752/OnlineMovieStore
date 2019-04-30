@@ -16,7 +16,6 @@ namespace OnlineMovieStore.Data.Tables
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string Id { get; set; }
-        public string MovieId { get; set; }
         public string FullName { get; set; }
         public ICollection<MovieWriter> MovieWriters { get; set; }
     }

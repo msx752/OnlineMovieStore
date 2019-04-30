@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineMovieStore.Data;
 
 namespace OnlineMovieStore.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190430151142_fixesProperties")]
+    partial class fixesProperties
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -193,83 +195,6 @@ namespace OnlineMovieStore.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Action"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Sci-Fi"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Adventure"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Fantasy"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Horror"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "Drama"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "Family"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "Mystery"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Name = "Documentary"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Name = "Comedy"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Name = "Crime"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Name = "Thriller"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Name = "Romance"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Name = "History"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Name = "War"
-                        });
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.Director", b =>
@@ -281,63 +206,6 @@ namespace OnlineMovieStore.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Directors");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "nm0901138",
-                            FullName = "Alfred Vohrer"
-                        },
-                        new
-                        {
-                            Id = "nm0173775",
-                            FullName = "Lluís Josep Comerón"
-                        },
-                        new
-                        {
-                            Id = "nm0905152",
-                            FullName = "Lilly Wachowski"
-                        },
-                        new
-                        {
-                            Id = "nm0905154",
-                            FullName = "Lana Wachowski"
-                        },
-                        new
-                        {
-                            Id = "nm0000116",
-                            FullName = "James Cameron"
-                        },
-                        new
-                        {
-                            Id = "nm0807023",
-                            FullName = "Natalia Smirnoff"
-                        },
-                        new
-                        {
-                            Id = "nm0006955",
-                            FullName = "Lewis Schoenbrun"
-                        },
-                        new
-                        {
-                            Id = "nm0956913",
-                            FullName = "Andrei Zinca"
-                        },
-                        new
-                        {
-                            Id = "nm0474289",
-                            FullName = "Heikki Kujanpää"
-                        },
-                        new
-                        {
-                            Id = "nm10086396",
-                            FullName = "Bradley Alcime"
-                        },
-                        new
-                        {
-                            Id = "nm10114969",
-                            FullName = "Ahmed Mansour"
-                        });
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.Movie", b =>
@@ -447,83 +315,6 @@ namespace OnlineMovieStore.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Writers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "nm0908624",
-                            FullName = "Edgar Wallace"
-                        },
-                        new
-                        {
-                            Id = "nm0251912",
-                            FullName = "Egon Eis"
-                        },
-                        new
-                        {
-                            Id = "nm0525742",
-                            FullName = "Wolfgang Lukschy"
-                        },
-                        new
-                        {
-                            Id = "nm0173775",
-                            FullName = "Lluís Josep Comerón"
-                        },
-                        new
-                        {
-                            Id = "nm0905152",
-                            FullName = "Lilly Wachowski"
-                        },
-                        new
-                        {
-                            Id = "nm0905154",
-                            FullName = "Lana Wachowski"
-                        },
-                        new
-                        {
-                            Id = "nm0000116",
-                            FullName = "James Cameron"
-                        },
-                        new
-                        {
-                            Id = "nm0807023",
-                            FullName = "Natalia Smirnoff"
-                        },
-                        new
-                        {
-                            Id = "nm0150043",
-                            FullName = "Ted Chalmers"
-                        },
-                        new
-                        {
-                            Id = "nm0827500",
-                            FullName = "David S. Sterling"
-                        },
-                        new
-                        {
-                            Id = "nm0956913",
-                            FullName = "Andrei Zinca"
-                        },
-                        new
-                        {
-                            Id = "nm0610219",
-                            FullName = "Oren Moverman"
-                        },
-                        new
-                        {
-                            Id = "nm0474289",
-                            FullName = "Heikki Kujanpää"
-                        },
-                        new
-                        {
-                            Id = "nm0718558",
-                            FullName = "Mikko Reitala"
-                        },
-                        new
-                        {
-                            Id = "nm10086396",
-                            FullName = "Bradley Alcime"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
