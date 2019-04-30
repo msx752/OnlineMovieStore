@@ -58,9 +58,9 @@ namespace OnlineMovieStore.Data
                 new MovieDirector() { MovieId = "tt1517238", DirectorId = "nm0807023" },
                 new MovieDirector() { MovieId = "tt1854506", DirectorId = "nm0006955" },
                 new MovieDirector() { MovieId = "tt2076307", DirectorId = "nm0956913" },
-                new MovieDirector() { MovieId = "tt7220696", DirectorId = "nm0474289" },
-                new MovieDirector() { MovieId = "tt8923874", DirectorId = "nm10086396" },
-                new MovieDirector() { MovieId = "tt8984748", DirectorId = "nm10114969" }
+                new MovieDirector() { MovieId = "tt7220696", DirectorId = "nm0474289" }
+               // new MovieDirector() { MovieId = "tt8923874", DirectorId = "nm10086396" },
+               // new MovieDirector() { MovieId = "tt8984748", DirectorId = "nm10114969" }
 
                 );
 
@@ -84,8 +84,8 @@ namespace OnlineMovieStore.Data
                 new MovieWriter() { MovieId = "tt6933454", WriterId = "nm0610219" },
                 new MovieWriter() { MovieId = "tt6933454", WriterId = "nm0807023" },
                 new MovieWriter() { MovieId = "tt7220696", WriterId = "nm0474289" },
-                new MovieWriter() { MovieId = "tt7220696", WriterId = "nm0718558" },
-                new MovieWriter() { MovieId = "tt8923874", WriterId = "nm10086396" }
+                new MovieWriter() { MovieId = "tt7220696", WriterId = "nm0718558" }
+               // new MovieWriter() { MovieId = "tt8923874", WriterId = "nm10086396" }
 
                 );
 

@@ -83,7 +83,7 @@ namespace OnlineMovieStore.Data
           modelBuilder.SeedRatings();
              modelBuilder.SeedMovies();
              modelBuilder.SeedMovieWriters();
-             /*modelBuilder.SeedmovieDirectors();*/
+             modelBuilder.SeedmovieDirectors();
             base.OnModelCreating(modelBuilder);
         }
 

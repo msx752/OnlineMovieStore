@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineMovieStore.Data;
 
 namespace OnlineMovieStore.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190430174356_seed_moviewriters")]
+    partial class seed_moviewriters
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -560,58 +562,6 @@ namespace OnlineMovieStore.Data.Migrations
                     b.HasIndex("DirectorId");
 
                     b.ToTable("MovieDirectors");
-
-                    b.HasData(
-                        new
-                        {
-                            MovieId = "tt0054395",
-                            DirectorId = "nm0901138"
-                        },
-                        new
-                        {
-                            MovieId = "tt0133093",
-                            DirectorId = "nm0905152"
-                        },
-                        new
-                        {
-                            MovieId = "tt0133093",
-                            DirectorId = "nm0905154"
-                        },
-                        new
-                        {
-                            MovieId = "tt0234215",
-                            DirectorId = "nm0905154"
-                        },
-                        new
-                        {
-                            MovieId = "tt0234215",
-                            DirectorId = "nm0905152"
-                        },
-                        new
-                        {
-                            MovieId = "tt0499549",
-                            DirectorId = "nm0000116"
-                        },
-                        new
-                        {
-                            MovieId = "tt1517238",
-                            DirectorId = "nm0807023"
-                        },
-                        new
-                        {
-                            MovieId = "tt1854506",
-                            DirectorId = "nm0006955"
-                        },
-                        new
-                        {
-                            MovieId = "tt2076307",
-                            DirectorId = "nm0956913"
-                        },
-                        new
-                        {
-                            MovieId = "tt7220696",
-                            DirectorId = "nm0474289"
-                        });
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieWriter", b =>
