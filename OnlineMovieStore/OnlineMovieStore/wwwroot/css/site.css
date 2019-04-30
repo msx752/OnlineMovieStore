@@ -121,14 +121,35 @@ body {
 
 .card-block .view-detail {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
+    top: 56%;
+    left: 45%;
+    transform: translate(-35%, -50%);
+    -ms-transform: translate(-35%, -50%);
     border: none;
-    cursor: pointer;
+    cursor: pointer !important;
 }
 
 .img-card:hover {
     opacity: 0.9;
+    cursor: pointer !important;
+}
+.img-card:hover {
+    -webkit-box-shadow: -1px 3px 19px 7px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 3px 19px 7px rgba(0,0,0,0.75);
+    box-shadow: -1px 3px 19px 7px rgba(0,0,0,0.75);
+}
+.average-rating {
+    left: 28%;
+    top: 91%;
+    position: absolute;
+    -webkit-box-shadow: -1px 3px 32px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 3px 32px -3px rgba(0,0,0,0.75);
+    box-shadow: -1px 3px 32px -3px rgba(0,0,0,0.75);
+    color:white;
+    background-color:black;
+    opacity: 0.6;
+    padding:1px;
+}
+.star-checked {
+    color: orange;
 }

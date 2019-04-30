@@ -19,7 +19,12 @@ namespace OnlineMovieStore.Controllers
         }
         public IActionResult Index()
         {
-            return View(MovieRepo.GetAll());
+
+            MovieViewModel viewModel = new MovieViewModel();
+            viewModel.HighRatings = MovieRepo.GetAll().Where(f => f.Rating.AverageRating >= 70).Take(5).ToList();
+            viewModel.All = MovieRepo.GetAll().ToList();
+            viewModel.RecentlyAdded = MovieRepo.GetAll().Take(4).ToList();
+            return View(viewModel);
         }
 
         public IActionResult Privacy()
