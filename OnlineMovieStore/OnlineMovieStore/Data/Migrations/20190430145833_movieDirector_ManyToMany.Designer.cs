@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineMovieStore.Data;
 
 namespace OnlineMovieStore.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190430145833_movieDirector_ManyToMany")]
+    partial class movieDirector_ManyToMany
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -270,25 +272,6 @@ namespace OnlineMovieStore.Data.Migrations
                     b.ToTable("MovieDirector");
                 });
 
-            modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieWriter", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("MovieId");
-
-                    b.Property<string>("WriterId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MovieId");
-
-                    b.HasIndex("WriterId");
-
-                    b.ToTable("MovieWriter");
-                });
-
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.Rating", b =>
                 {
                     b.Property<int>("Id")
@@ -304,19 +287,6 @@ namespace OnlineMovieStore.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Ratings");
-                });
-
-            modelBuilder.Entity("OnlineMovieStore.Data.Tables.Writer", b =>
-                {
-                    b.Property<string>("Id");
-
-                    b.Property<string>("FullName");
-
-                    b.Property<string>("MovieId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Writer");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -401,17 +371,6 @@ namespace OnlineMovieStore.Data.Migrations
                     b.HasOne("OnlineMovieStore.Data.Tables.Movie", "Movie")
                         .WithMany("MovieDirectors")
                         .HasForeignKey("MovieId");
-                });
-
-            modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieWriter", b =>
-                {
-                    b.HasOne("OnlineMovieStore.Data.Tables.Movie", "Movie")
-                        .WithMany("MovieWriters")
-                        .HasForeignKey("MovieId");
-
-                    b.HasOne("OnlineMovieStore.Data.Tables.Writer", "Writer")
-                        .WithMany("MovieWriters")
-                        .HasForeignKey("WriterId");
                 });
 #pragma warning restore 612, 618
         }

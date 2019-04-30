@@ -25,21 +25,44 @@ namespace OnlineMovieStore.Data
             modelBuilder.Entity<Category>().HasKey(f => f.Id);
             modelBuilder.Entity<MovieCategory>().HasKey(f => f.Id);
 
+            // one to many
             modelBuilder.Entity<Movie>()
               .HasOne<Rating>(s => s.Rating)
               .WithMany(g => g.Movies)
               .HasForeignKey(s => s.RatingId);
 
+            // many to many 
             modelBuilder.Entity<MovieCategory>()
              .HasOne<Movie>(s => s.Movie)
              .WithMany(g => g.Categories)
              .HasForeignKey(s => s.MovieId);
-
             modelBuilder.Entity<MovieCategory>()
              .HasOne<Category>(s => s.Category)
              .WithMany(g => g.Categories)
              .HasForeignKey(s => s.CategoryId);
+            //
 
+            // many to many 
+            modelBuilder.Entity<MovieDirector>()
+             .HasOne<Movie>(s => s.Movie)
+             .WithMany(g => g.MovieDirectors)
+             .HasForeignKey(s => s.MovieId);
+            modelBuilder.Entity<MovieDirector>()
+             .HasOne<Director>(s => s.Director)
+             .WithMany(g => g.MovieDirectors)
+             .HasForeignKey(s => s.DirectorId);
+            //
+
+            // many to many 
+            modelBuilder.Entity<MovieWriter>()
+             .HasOne<Movie>(s => s.Movie)
+             .WithMany(g => g.MovieWriters)
+             .HasForeignKey(s => s.MovieId);
+            modelBuilder.Entity<MovieWriter>()
+             .HasOne<Writer>(s => s.Writer)
+             .WithMany(g => g.MovieWriters)
+             .HasForeignKey(s => s.WriterId);
+            //
             modelBuilder.Seed();
             base.OnModelCreating(modelBuilder);
         }
