@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineMovieStore.Data.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,7 +12,9 @@ namespace OnlineMovieStore.Data.Tables
     {
         public Movie()
         {
-            /*   Cagetories = new HashSet<MovieCategory>();
+            Type = MovieType.movie;
+            Categories = new HashSet<MovieCategory>();
+            /*   
                MovieDirectors = new HashSet<MovieDirector>();
                MovieWriters = new HashSet<MovieWriter>();*/
         }
@@ -20,7 +23,7 @@ namespace OnlineMovieStore.Data.Tables
         public string Id { get; set; }
         [Required]
         public string Title { get; set; }
-        // public ICollection<MovieCategory> Cagetories { get; set; }
+        public ICollection<MovieCategory> Categories { get; set; }
         [Required]
         public int RuntimeMinutes { get; set; }
         [Required]
@@ -29,6 +32,7 @@ namespace OnlineMovieStore.Data.Tables
         //  public ICollection<MovieWriter> MovieWriters { get; set; }
         public string Description { get; set; }
         public int RatingId { get; set; }
-        public MovieRating Rating { get; set; }
+        public Rating Rating { get; set; }
+        public MovieType Type { get; set; }
     }
 }

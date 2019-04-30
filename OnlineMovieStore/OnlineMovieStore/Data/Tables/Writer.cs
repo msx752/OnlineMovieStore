@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OnlineMovieStore.Data.Tables
 {
-    public class MovieWriter
+    public class Writer
     {
        
         [Key]

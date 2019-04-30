@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace OnlineMovieStore.Data.Tables
 {
-    public class MovieType
+    public class Category
     {
         [Key]
         public int Id { get; set; }
-        public string Name { get; set; }//movie
+        public string Name { get; set; }
+        public ICollection<MovieCategory> Categories { get; set; }
     }
 }
