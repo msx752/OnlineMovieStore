@@ -12,7 +12,11 @@ namespace OnlineMovieStore.Data
         public DbSet<Rating> Ratings { get; set; }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<MovieCategory> MovieCategories { get; set; }
+        public DbSet<Writer> Writers { get; set; }
+        public DbSet<Director> Directors { get; set; }
+        public DbSet<MovieWriter> MovieWriters { get; set; }//for many to many relations
+        public DbSet<MovieDirector> MovieDirectors { get; set; }//for many to many relations
+        public DbSet<MovieCategory> MovieCategories { get; set; }//for many to many relations
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
@@ -20,9 +24,13 @@ namespace OnlineMovieStore.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Movie>().HasKey(f => f.Id);
             modelBuilder.Entity<Rating>().HasKey(f => f.Id);
+            modelBuilder.Entity<Movie>().HasKey(f => f.Id);
             modelBuilder.Entity<Category>().HasKey(f => f.Id);
+            modelBuilder.Entity<Writer>().HasKey(f => f.Id);
+            modelBuilder.Entity<Director>().HasKey(f => f.Id);
+            modelBuilder.Entity<MovieWriter>().HasKey(f => f.Id);
+            modelBuilder.Entity<MovieDirector>().HasKey(f => f.Id);
             modelBuilder.Entity<MovieCategory>().HasKey(f => f.Id);
 
             // one to many
