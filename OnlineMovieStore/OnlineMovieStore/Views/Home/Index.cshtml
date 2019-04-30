@@ -1,70 +1,47 @@
 ﻿@model OnlineMovieStore.Models.MovieViewModel
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Online Movie Store";
 }
-    <section class="highratings" id="highratings">
-        <h2>High Ratings</h2>
-        <div class="row">
-            @{
 
-                foreach (var item in Model.HighRatings)
-                {
+@functions{
 
-                    <div class="col-sm-2 hvr-shadow-radial">
-                        <article class="card rounded">
-                            <header class="title-header">
-                                <h3>@(item.Title)</h3>
-                            </header>
-                            <div class="card-block">
-                                <div class="img-card">
-                                    <img src="~/img/@(item.Id).png" alt="Movie" class="w-100" />
-                                    <div class="average-rating rounded">
-                                        <span class="fa fa-star star-checked"></span>
-                                        <span class="fa fa-star star-checked"></span>
-                                        <span class="fa fa-star star-checked"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                    </div>
-                                    <div class="view-detail" style="display:none;">
-                                        <button class="btn btn-sm btn-danger btn-block"><i class="fa fa-eye"></i> View Detail</button>
-                                    </div>
-                                    @*<a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> View Detail</a>*@
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                }
+    public Microsoft.AspNetCore.Html.IHtmlContent DrawStars(OnlineMovieStore.Data.Tables.Rating rating)
+    {
+        string html = "";
+        var star = Math.Round(((rating.AverageRating / 100) / 2) * 10);
+        for (int i = 1; i <= 5; i++)
+        {
+            string IsChecked = "";
+            if (star <= i && star != 0)
+            {
+                IsChecked = "star-checked";
             }
-        </div>
-    </section>
+            html += $"<span class=\"fa fa-star {IsChecked}\"></span>";
+        }
 
-<section class="movies" id="movies">
-    <h2>Movies</h2>
+        return Html.Raw(html);
+    }
+}
+<section class="highratings" id="highratings">
+    <h2>High Ratings</h2>
     <div class="row">
         @{
-
-            foreach (var item in Model.All)
+            foreach (var item in Model.HighRatings)
             {
-
                 <div class="col-sm-2 hvr-shadow-radial">
                     <article class="card rounded">
                         <header class="title-header">
-                            <h3>@(item.Title)</h3>
+                            <h3 class="text-center">@(item.Title)</h3>
                         </header>
                         <div class="card-block">
                             <div class="img-card">
-                                <img src="~/img/@(item.Id).png" alt="Movie" class="w-100" />
+                                <img src="~/img/@(item.Id).png" alt="@(item.Title)" class="w-100" />
                                 <div class="average-rating rounded">
-                                    <span class="fa fa-star star-checked"></span>
-                                    <span class="fa fa-star star-checked"></span>
-                                    <span class="fa fa-star star-checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
+                                    @DrawStars(item.Rating)
                                 </div>
                                 <div class="view-detail" style="display:none;">
                                     <button class="btn btn-sm btn-danger btn-block"><i class="fa fa-eye"></i> View Detail</button>
                                 </div>
-                                @*<a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> View Detail</a>*@
                             </div>
                         </div>
                     </article>
@@ -74,35 +51,56 @@
     </div>
 </section>
 
+<section class="movies" id="movies">
+    <h2>Movies</h2>
+    <div class="row">
+        @{
+            foreach (var item in Model.All)
+            {
+                <div class="col-sm-2 hvr-shadow-radial">
+                    <article class="card rounded">
+                                <header class="title-header">
+                                    <h3 class="text-center">@(item.Title)</h3>
+                                </header>
+                        <div class="card-block">
+                            <div class="img-card">
+                                <img src="~/img/@(item.Id).png" alt="@(item.Title)" class="w-100" />
+                                <div class="average-rating rounded">
+                                    @DrawStars(item.Rating)
+                                </div>
+                                <div class="view-detail" style="display:none;">
+                                    <button class="btn btn-sm btn-danger btn-block"><i class="fa fa-eye"></i> View Detail</button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            }
+        }
+    </div>
+</section>
 
 <section class="movies" id="movies">
     <h2>Recently Added</h2>
     <div class="row">
         <div class="row">
             @{
-
                 foreach (var item in Model.RecentlyAdded)
                 {
-
                     <div class="col-sm-2 hvr-shadow-radial">
                         <article class="card rounded">
-                            <header class="title-header">
-                                <h3>@(item.Title)</h3>
-                            </header>
+                                        <header class="title-header">
+                                            <h3 class="text-center">@(item.Title)</h3>
+                                        </header>
                             <div class="card-block">
                                 <div class="img-card">
-                                    <img src="~/img/@(item.Id).png" alt="Movie" class="w-100" />
+                                    <img src="~/img/@(item.Id).png" alt="@(item.Title)" class="w-100" />
                                     <div class="average-rating rounded">
-                                        <span class="fa fa-star star-checked"></span>
-                                        <span class="fa fa-star star-checked"></span>
-                                        <span class="fa fa-star star-checked"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
+                                        @DrawStars(item.Rating)
                                     </div>
                                     <div class="view-detail" style="display:none;">
                                         <button class="btn btn-sm btn-danger btn-block"><i class="fa fa-eye"></i> View Detail</button>
                                     </div>
-                                    @*<a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> View Detail</a>*@
                                 </div>
                             </div>
                         </article>

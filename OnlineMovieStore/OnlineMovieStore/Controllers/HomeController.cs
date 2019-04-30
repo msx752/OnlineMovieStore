@@ -19,7 +19,6 @@ namespace OnlineMovieStore.Controllers
         }
         public IActionResult Index()
         {
-
             MovieViewModel viewModel = new MovieViewModel();
             viewModel.HighRatings = MovieRepo.GetAll().Where(f => f.Rating.AverageRating >= 70).Take(5).ToList();
             viewModel.All = MovieRepo.GetAll().ToList();
