@@ -78,6 +78,10 @@ namespace OnlineMovieStore.Data
             modelBuilder.SeedCategories();
             modelBuilder.SeedDirectors();
             modelBuilder.SeedWriters();
+            modelBuilder.SeedRatings();
+            modelBuilder.SeedMovies();
+            //modelBuilder.SeedMovieWriters();
+            //modelBuilder.SeedmovieDirectors();
             base.OnModelCreating(modelBuilder);
         }
 

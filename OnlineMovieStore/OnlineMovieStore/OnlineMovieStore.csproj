@@ -16,6 +16,8 @@
     <Compile Remove="Data\Migrations\20190430145802_movieCategory_ManyToMany.Designer.cs" />
     <Compile Remove="Data\Migrations\20190430153310_seedtest1.cs" />
     <Compile Remove="Data\Migrations\20190430153310_seedtest1.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190430161338_nullable_ratingProp.cs" />
+    <Compile Remove="Data\Migrations\20190430161338_nullable_ratingProp.Designer.cs" />
   </ItemGroup>
 
 

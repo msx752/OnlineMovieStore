@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineMovieStore.Data;
 
 namespace OnlineMovieStore.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190430162942_seed_ratings")]
+    partial class seed_ratings
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -362,178 +364,6 @@ namespace OnlineMovieStore.Data.Migrations
                     b.HasIndex("RatingId");
 
                     b.ToTable("Movies");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "tt0133093",
-                            Description = "",
-                            RatingId = 1,
-                            RuntimeMinutes = 136,
-                            StartYear = 1999,
-                            Title = "The Matrix",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt0234215",
-                            Description = "",
-                            RatingId = 2,
-                            RuntimeMinutes = 138,
-                            StartYear = 2003,
-                            Title = "The Matrix Reloaded",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt0499549",
-                            Description = "",
-                            RatingId = 3,
-                            RuntimeMinutes = 162,
-                            StartYear = 2009,
-                            Title = "Avatar",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt1775309",
-                            Description = "",
-                            RatingId = 4,
-                            RuntimeMinutes = 93,
-                            StartYear = 2011,
-                            Title = "Avatar",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt1854506",
-                            Description = "",
-                            RatingId = 5,
-                            RuntimeMinutes = 80,
-                            StartYear = 2011,
-                            Title = "Aliens vs. Avatars",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt8968844",
-                            Description = "",
-                            RatingId = 6,
-                            RuntimeMinutes = 80,
-                            StartYear = 2018,
-                            Title = "Samhain: A Halloween Horror Movie",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt9024440",
-                            Description = "",
-                            RatingId = 7,
-                            RuntimeMinutes = 50,
-                            StartYear = 2018,
-                            Title = "A Meowy Halloween",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt0054395",
-                            Description = "",
-                            RatingId = 8,
-                            RuntimeMinutes = 104,
-                            StartYear = 1961,
-                            Title = "Dead Eyes of London",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt7578416",
-                            Description = "",
-                            RatingId = 9,
-                            RuntimeMinutes = 106,
-                            StartYear = 2017,
-                            Title = "We, the Dead",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt7640234",
-                            Description = "",
-                            RatingId = 10,
-                            RuntimeMinutes = 65,
-                            StartYear = 2018,
-                            Title = "Drown Among the Dead",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt0091805",
-                            Description = "",
-                            RatingId = 11,
-                            RuntimeMinutes = 93,
-                            StartYear = 1986,
-                            Title = "Puzzle",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt0870915",
-                            Description = "",
-                            RatingId = 12,
-                            RuntimeMinutes = 91,
-                            StartYear = 2006,
-                            Title = "Puzzle",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt1517238",
-                            Description = "",
-                            RatingId = 13,
-                            RuntimeMinutes = 87,
-                            StartYear = 2009,
-                            Title = "Puzzle",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt2076307",
-                            Description = "",
-                            RatingId = 14,
-                            RuntimeMinutes = 90,
-                            StartYear = 2013,
-                            Title = "Puzzle",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt3492330",
-                            Description = "",
-                            RatingId = 15,
-                            RuntimeMinutes = 85,
-                            StartYear = 2014,
-                            Title = "Puzzle",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt6933454",
-                            Description = "",
-                            RatingId = 16,
-                            RuntimeMinutes = 103,
-                            StartYear = 2018,
-                            Title = "Puzzle",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt7220696",
-                            Description = "",
-                            RatingId = 17,
-                            RuntimeMinutes = 103,
-                            StartYear = 2018,
-                            Title = "Laugh or Die",
-                            Type = 0
-                        });
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieCategory", b =>
