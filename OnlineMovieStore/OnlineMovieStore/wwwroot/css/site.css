@@ -128,3 +128,7 @@ body {
     border: none;
     cursor: pointer;
 }
+
+.img-card:hover {
+    opacity: 0.9;
+}
