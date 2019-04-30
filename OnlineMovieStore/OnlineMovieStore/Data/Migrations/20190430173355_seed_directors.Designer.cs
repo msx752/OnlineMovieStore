@@ -10,8 +10,8 @@ using OnlineMovieStore.Data;
 namespace OnlineMovieStore.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190430163012_seed_movies")]
-    partial class seed_movies
+    [Migration("20190430173355_seed_directors")]
+    partial class seed_directors
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -348,7 +348,7 @@ namespace OnlineMovieStore.Data.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<int?>("RatingId");
+                    b.Property<int>("RatingId");
 
                     b.Property<int>("RuntimeMinutes");
 
@@ -364,231 +364,41 @@ namespace OnlineMovieStore.Data.Migrations
                     b.HasIndex("RatingId");
 
                     b.ToTable("Movies");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "tt0133093",
-                            Description = "",
-                            RatingId = 1,
-                            RuntimeMinutes = 136,
-                            StartYear = 1999,
-                            Title = "The Matrix",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt0234215",
-                            Description = "",
-                            RatingId = 2,
-                            RuntimeMinutes = 138,
-                            StartYear = 2003,
-                            Title = "The Matrix Reloaded",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt0499549",
-                            Description = "",
-                            RatingId = 3,
-                            RuntimeMinutes = 162,
-                            StartYear = 2009,
-                            Title = "Avatar",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt1775309",
-                            Description = "",
-                            RatingId = 4,
-                            RuntimeMinutes = 93,
-                            StartYear = 2011,
-                            Title = "Avatar",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt1854506",
-                            Description = "",
-                            RatingId = 5,
-                            RuntimeMinutes = 80,
-                            StartYear = 2011,
-                            Title = "Aliens vs. Avatars",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt8968844",
-                            Description = "",
-                            RatingId = 6,
-                            RuntimeMinutes = 80,
-                            StartYear = 2018,
-                            Title = "Samhain: A Halloween Horror Movie",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt9024440",
-                            Description = "",
-                            RatingId = 7,
-                            RuntimeMinutes = 50,
-                            StartYear = 2018,
-                            Title = "A Meowy Halloween",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt0054395",
-                            Description = "",
-                            RatingId = 8,
-                            RuntimeMinutes = 104,
-                            StartYear = 1961,
-                            Title = "Dead Eyes of London",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt7578416",
-                            Description = "",
-                            RatingId = 9,
-                            RuntimeMinutes = 106,
-                            StartYear = 2017,
-                            Title = "We, the Dead",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt7640234",
-                            Description = "",
-                            RatingId = 10,
-                            RuntimeMinutes = 65,
-                            StartYear = 2018,
-                            Title = "Drown Among the Dead",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt0091805",
-                            Description = "",
-                            RatingId = 11,
-                            RuntimeMinutes = 93,
-                            StartYear = 1986,
-                            Title = "Puzzle",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt0870915",
-                            Description = "",
-                            RatingId = 12,
-                            RuntimeMinutes = 91,
-                            StartYear = 2006,
-                            Title = "Puzzle",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt1517238",
-                            Description = "",
-                            RatingId = 13,
-                            RuntimeMinutes = 87,
-                            StartYear = 2009,
-                            Title = "Puzzle",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt2076307",
-                            Description = "",
-                            RatingId = 14,
-                            RuntimeMinutes = 90,
-                            StartYear = 2013,
-                            Title = "Puzzle",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt3492330",
-                            Description = "",
-                            RatingId = 15,
-                            RuntimeMinutes = 85,
-                            StartYear = 2014,
-                            Title = "Puzzle",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt6933454",
-                            Description = "",
-                            RatingId = 16,
-                            RuntimeMinutes = 103,
-                            StartYear = 2018,
-                            Title = "Puzzle",
-                            Type = 0
-                        },
-                        new
-                        {
-                            Id = "tt7220696",
-                            Description = "",
-                            RatingId = 17,
-                            RuntimeMinutes = 103,
-                            StartYear = 2018,
-                            Title = "Laugh or Die",
-                            Type = 0
-                        });
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieCategory", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("MovieId");
 
                     b.Property<int>("CategoryId");
 
-                    b.Property<string>("MovieId");
-
-                    b.HasKey("Id");
+                    b.HasKey("MovieId", "CategoryId");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("MovieId");
 
                     b.ToTable("MovieCategories");
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieDirector", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("MovieId");
 
                     b.Property<string>("DirectorId");
 
-                    b.Property<string>("MovieId");
-
-                    b.HasKey("Id");
+                    b.HasKey("MovieId", "DirectorId");
 
                     b.HasIndex("DirectorId");
-
-                    b.HasIndex("MovieId");
 
                     b.ToTable("MovieDirectors");
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieWriter", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
                     b.Property<string>("MovieId");
 
                     b.Property<string>("WriterId");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("MovieId");
+                    b.HasKey("MovieId", "WriterId");
 
                     b.HasIndex("WriterId");
 
@@ -610,127 +420,6 @@ namespace OnlineMovieStore.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Ratings");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AverageRating = 87.0,
-                            MovieId = "tt0133093",
-                            NumVotes = 1493180
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AverageRating = 72.0,
-                            MovieId = "tt0234215",
-                            NumVotes = 475351
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AverageRating = 78.0,
-                            MovieId = "tt0499549",
-                            NumVotes = 1036901
-                        },
-                        new
-                        {
-                            Id = 4,
-                            AverageRating = 62.0,
-                            MovieId = "tt1775309",
-                            NumVotes = 41
-                        },
-                        new
-                        {
-                            Id = 5,
-                            AverageRating = 16.0,
-                            MovieId = "tt1854506",
-                            NumVotes = 1538
-                        },
-                        new
-                        {
-                            Id = 6,
-                            AverageRating = 25.0,
-                            MovieId = "tt8968844",
-                            NumVotes = 17
-                        },
-                        new
-                        {
-                            Id = 7,
-                            AverageRating = 67.0,
-                            MovieId = "tt9024440",
-                            NumVotes = 15
-                        },
-                        new
-                        {
-                            Id = 8,
-                            AverageRating = 64.0,
-                            MovieId = "tt0054395",
-                            NumVotes = 828
-                        },
-                        new
-                        {
-                            Id = 9,
-                            AverageRating = 67.0,
-                            MovieId = "tt7578416",
-                            NumVotes = 23
-                        },
-                        new
-                        {
-                            Id = 10,
-                            AverageRating = 54.0,
-                            MovieId = "tt7640234",
-                            NumVotes = 29
-                        },
-                        new
-                        {
-                            Id = 11,
-                            AverageRating = 61.0,
-                            MovieId = "tt0091805",
-                            NumVotes = 41
-                        },
-                        new
-                        {
-                            Id = 12,
-                            AverageRating = 64.0,
-                            MovieId = "tt0870915",
-                            NumVotes = 260
-                        },
-                        new
-                        {
-                            Id = 13,
-                            AverageRating = 67.0,
-                            MovieId = "tt1517238",
-                            NumVotes = 517
-                        },
-                        new
-                        {
-                            Id = 14,
-                            AverageRating = 68.0,
-                            MovieId = "tt2076307",
-                            NumVotes = 66
-                        },
-                        new
-                        {
-                            Id = 15,
-                            AverageRating = 58.0,
-                            MovieId = "tt3492330",
-                            NumVotes = 218
-                        },
-                        new
-                        {
-                            Id = 16,
-                            AverageRating = 67.0,
-                            MovieId = "tt6933454",
-                            NumVotes = 3404
-                        },
-                        new
-                        {
-                            Id = 17,
-                            AverageRating = 67.0,
-                            MovieId = "tt7220696",
-                            NumVotes = 391
-                        });
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.Writer", b =>
@@ -742,83 +431,6 @@ namespace OnlineMovieStore.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Writers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "nm0908624",
-                            FullName = "Edgar Wallace"
-                        },
-                        new
-                        {
-                            Id = "nm0251912",
-                            FullName = "Egon Eis"
-                        },
-                        new
-                        {
-                            Id = "nm0525742",
-                            FullName = "Wolfgang Lukschy"
-                        },
-                        new
-                        {
-                            Id = "nm0173775",
-                            FullName = "Lluís Josep Comerón"
-                        },
-                        new
-                        {
-                            Id = "nm0905152",
-                            FullName = "Lilly Wachowski"
-                        },
-                        new
-                        {
-                            Id = "nm0905154",
-                            FullName = "Lana Wachowski"
-                        },
-                        new
-                        {
-                            Id = "nm0000116",
-                            FullName = "James Cameron"
-                        },
-                        new
-                        {
-                            Id = "nm0807023",
-                            FullName = "Natalia Smirnoff"
-                        },
-                        new
-                        {
-                            Id = "nm0150043",
-                            FullName = "Ted Chalmers"
-                        },
-                        new
-                        {
-                            Id = "nm0827500",
-                            FullName = "David S. Sterling"
-                        },
-                        new
-                        {
-                            Id = "nm0956913",
-                            FullName = "Andrei Zinca"
-                        },
-                        new
-                        {
-                            Id = "nm0610219",
-                            FullName = "Oren Moverman"
-                        },
-                        new
-                        {
-                            Id = "nm0474289",
-                            FullName = "Heikki Kujanpää"
-                        },
-                        new
-                        {
-                            Id = "nm0718558",
-                            FullName = "Mikko Reitala"
-                        },
-                        new
-                        {
-                            Id = "nm10086396",
-                            FullName = "Bradley Alcime"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -876,7 +488,9 @@ namespace OnlineMovieStore.Data.Migrations
                 {
                     b.HasOne("OnlineMovieStore.Data.Tables.Rating", "Rating")
                         .WithMany("Movies")
-                        .HasForeignKey("RatingId");
+                        .HasForeignKey("RatingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieCategory", b =>
@@ -889,29 +503,39 @@ namespace OnlineMovieStore.Data.Migrations
 
                     b.HasOne("OnlineMovieStore.Data.Tables.Movie", "Movie")
                         .WithMany("Categories")
-                        .HasForeignKey("MovieId");
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieDirector", b =>
                 {
                     b.HasOne("OnlineMovieStore.Data.Tables.Director", "Director")
                         .WithMany("MovieDirectors")
-                        .HasForeignKey("DirectorId");
+                        .HasForeignKey("DirectorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("OnlineMovieStore.Data.Tables.Movie", "Movie")
                         .WithMany("MovieDirectors")
-                        .HasForeignKey("MovieId");
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieWriter", b =>
                 {
                     b.HasOne("OnlineMovieStore.Data.Tables.Movie", "Movie")
                         .WithMany("MovieWriters")
-                        .HasForeignKey("MovieId");
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("OnlineMovieStore.Data.Tables.Writer", "Writer")
                         .WithMany("MovieWriters")
-                        .HasForeignKey("WriterId");
+                        .HasForeignKey("WriterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

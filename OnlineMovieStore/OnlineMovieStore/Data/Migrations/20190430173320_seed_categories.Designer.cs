@@ -10,8 +10,8 @@ using OnlineMovieStore.Data;
 namespace OnlineMovieStore.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190430145833_movieDirector_ManyToMany")]
-    partial class movieDirector_ManyToMany
+    [Migration("20190430173320_seed_categories")]
+    partial class seed_categories
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -195,6 +195,83 @@ namespace OnlineMovieStore.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Action"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Sci-Fi"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Adventure"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Fantasy"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Horror"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Drama"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Family"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Mystery"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Documentary"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Comedy"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "Crime"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "Thriller"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Name = "Romance"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Name = "History"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Name = "War"
+                        });
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.Director", b =>
@@ -203,11 +280,9 @@ namespace OnlineMovieStore.Data.Migrations
 
                     b.Property<string>("FullName");
 
-                    b.Property<string>("MovieId");
-
                     b.HasKey("Id");
 
-                    b.ToTable("Director");
+                    b.ToTable("Directors");
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.Movie", b =>
@@ -236,40 +311,41 @@ namespace OnlineMovieStore.Data.Migrations
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieCategory", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("MovieId");
 
                     b.Property<int>("CategoryId");
 
-                    b.Property<string>("MovieId");
-
-                    b.HasKey("Id");
+                    b.HasKey("MovieId", "CategoryId");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("MovieId");
 
                     b.ToTable("MovieCategories");
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieDirector", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("MovieId");
 
                     b.Property<string>("DirectorId");
 
-                    b.Property<string>("MovieId");
-
-                    b.HasKey("Id");
+                    b.HasKey("MovieId", "DirectorId");
 
                     b.HasIndex("DirectorId");
 
-                    b.HasIndex("MovieId");
+                    b.ToTable("MovieDirectors");
+                });
 
-                    b.ToTable("MovieDirector");
+            modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieWriter", b =>
+                {
+                    b.Property<string>("MovieId");
+
+                    b.Property<string>("WriterId");
+
+                    b.HasKey("MovieId", "WriterId");
+
+                    b.HasIndex("WriterId");
+
+                    b.ToTable("MovieWriters");
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.Rating", b =>
@@ -287,6 +363,17 @@ namespace OnlineMovieStore.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Ratings");
+                });
+
+            modelBuilder.Entity("OnlineMovieStore.Data.Tables.Writer", b =>
+                {
+                    b.Property<string>("Id");
+
+                    b.Property<string>("FullName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Writers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -359,18 +446,39 @@ namespace OnlineMovieStore.Data.Migrations
 
                     b.HasOne("OnlineMovieStore.Data.Tables.Movie", "Movie")
                         .WithMany("Categories")
-                        .HasForeignKey("MovieId");
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieDirector", b =>
                 {
                     b.HasOne("OnlineMovieStore.Data.Tables.Director", "Director")
                         .WithMany("MovieDirectors")
-                        .HasForeignKey("DirectorId");
+                        .HasForeignKey("DirectorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("OnlineMovieStore.Data.Tables.Movie", "Movie")
                         .WithMany("MovieDirectors")
-                        .HasForeignKey("MovieId");
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieWriter", b =>
+                {
+                    b.HasOne("OnlineMovieStore.Data.Tables.Movie", "Movie")
+                        .WithMany("MovieWriters")
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("OnlineMovieStore.Data.Tables.Writer", "Writer")
+                        .WithMany("MovieWriters")
+                        .HasForeignKey("WriterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -10,8 +10,8 @@ using OnlineMovieStore.Data;
 namespace OnlineMovieStore.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190430162305_nullable_ratingProp")]
-    partial class nullable_ratingProp
+    [Migration("20190430173421_seed_writers")]
+    partial class seed_writers
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -348,7 +348,7 @@ namespace OnlineMovieStore.Data.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<int?>("RatingId");
+                    b.Property<int>("RatingId");
 
                     b.Property<int>("RuntimeMinutes");
 
@@ -368,55 +368,37 @@ namespace OnlineMovieStore.Data.Migrations
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieCategory", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("MovieId");
 
                     b.Property<int>("CategoryId");
 
-                    b.Property<string>("MovieId");
-
-                    b.HasKey("Id");
+                    b.HasKey("MovieId", "CategoryId");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("MovieId");
 
                     b.ToTable("MovieCategories");
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieDirector", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("MovieId");
 
                     b.Property<string>("DirectorId");
 
-                    b.Property<string>("MovieId");
-
-                    b.HasKey("Id");
+                    b.HasKey("MovieId", "DirectorId");
 
                     b.HasIndex("DirectorId");
-
-                    b.HasIndex("MovieId");
 
                     b.ToTable("MovieDirectors");
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieWriter", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
                     b.Property<string>("MovieId");
 
                     b.Property<string>("WriterId");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("MovieId");
+                    b.HasKey("MovieId", "WriterId");
 
                     b.HasIndex("WriterId");
 
@@ -583,7 +565,9 @@ namespace OnlineMovieStore.Data.Migrations
                 {
                     b.HasOne("OnlineMovieStore.Data.Tables.Rating", "Rating")
                         .WithMany("Movies")
-                        .HasForeignKey("RatingId");
+                        .HasForeignKey("RatingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieCategory", b =>
@@ -596,29 +580,39 @@ namespace OnlineMovieStore.Data.Migrations
 
                     b.HasOne("OnlineMovieStore.Data.Tables.Movie", "Movie")
                         .WithMany("Categories")
-                        .HasForeignKey("MovieId");
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieDirector", b =>
                 {
                     b.HasOne("OnlineMovieStore.Data.Tables.Director", "Director")
                         .WithMany("MovieDirectors")
-                        .HasForeignKey("DirectorId");
+                        .HasForeignKey("DirectorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("OnlineMovieStore.Data.Tables.Movie", "Movie")
                         .WithMany("MovieDirectors")
-                        .HasForeignKey("MovieId");
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieWriter", b =>
                 {
                     b.HasOne("OnlineMovieStore.Data.Tables.Movie", "Movie")
                         .WithMany("MovieWriters")
-                        .HasForeignKey("MovieId");
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("OnlineMovieStore.Data.Tables.Writer", "Writer")
                         .WithMany("MovieWriters")
-                        .HasForeignKey("WriterId");
+                        .HasForeignKey("WriterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

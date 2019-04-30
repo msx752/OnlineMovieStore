@@ -10,8 +10,8 @@ using OnlineMovieStore.Data;
 namespace OnlineMovieStore.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190430162942_seed_ratings")]
-    partial class seed_ratings
+    [Migration("20190430173615_seed_movies")]
+    partial class seed_movies
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -348,7 +348,7 @@ namespace OnlineMovieStore.Data.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<int?>("RatingId");
+                    b.Property<int>("RatingId");
 
                     b.Property<int>("RuntimeMinutes");
 
@@ -364,59 +364,213 @@ namespace OnlineMovieStore.Data.Migrations
                     b.HasIndex("RatingId");
 
                     b.ToTable("Movies");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "tt0133093",
+                            Description = "",
+                            RatingId = 1,
+                            RuntimeMinutes = 136,
+                            StartYear = 1999,
+                            Title = "The Matrix",
+                            Type = 0
+                        },
+                        new
+                        {
+                            Id = "tt0234215",
+                            Description = "",
+                            RatingId = 2,
+                            RuntimeMinutes = 138,
+                            StartYear = 2003,
+                            Title = "The Matrix Reloaded",
+                            Type = 0
+                        },
+                        new
+                        {
+                            Id = "tt0499549",
+                            Description = "",
+                            RatingId = 3,
+                            RuntimeMinutes = 162,
+                            StartYear = 2009,
+                            Title = "Avatar",
+                            Type = 0
+                        },
+                        new
+                        {
+                            Id = "tt1775309",
+                            Description = "",
+                            RatingId = 4,
+                            RuntimeMinutes = 93,
+                            StartYear = 2011,
+                            Title = "Avatar",
+                            Type = 0
+                        },
+                        new
+                        {
+                            Id = "tt1854506",
+                            Description = "",
+                            RatingId = 5,
+                            RuntimeMinutes = 80,
+                            StartYear = 2011,
+                            Title = "Aliens vs. Avatars",
+                            Type = 0
+                        },
+                        new
+                        {
+                            Id = "tt8968844",
+                            Description = "",
+                            RatingId = 6,
+                            RuntimeMinutes = 80,
+                            StartYear = 2018,
+                            Title = "Samhain: A Halloween Horror Movie",
+                            Type = 0
+                        },
+                        new
+                        {
+                            Id = "tt9024440",
+                            Description = "",
+                            RatingId = 7,
+                            RuntimeMinutes = 50,
+                            StartYear = 2018,
+                            Title = "A Meowy Halloween",
+                            Type = 0
+                        },
+                        new
+                        {
+                            Id = "tt0054395",
+                            Description = "",
+                            RatingId = 8,
+                            RuntimeMinutes = 104,
+                            StartYear = 1961,
+                            Title = "Dead Eyes of London",
+                            Type = 0
+                        },
+                        new
+                        {
+                            Id = "tt7578416",
+                            Description = "",
+                            RatingId = 9,
+                            RuntimeMinutes = 106,
+                            StartYear = 2017,
+                            Title = "We, the Dead",
+                            Type = 0
+                        },
+                        new
+                        {
+                            Id = "tt7640234",
+                            Description = "",
+                            RatingId = 10,
+                            RuntimeMinutes = 65,
+                            StartYear = 2018,
+                            Title = "Drown Among the Dead",
+                            Type = 0
+                        },
+                        new
+                        {
+                            Id = "tt0091805",
+                            Description = "",
+                            RatingId = 11,
+                            RuntimeMinutes = 93,
+                            StartYear = 1986,
+                            Title = "Puzzle",
+                            Type = 0
+                        },
+                        new
+                        {
+                            Id = "tt0870915",
+                            Description = "",
+                            RatingId = 12,
+                            RuntimeMinutes = 91,
+                            StartYear = 2006,
+                            Title = "Puzzle",
+                            Type = 0
+                        },
+                        new
+                        {
+                            Id = "tt1517238",
+                            Description = "",
+                            RatingId = 13,
+                            RuntimeMinutes = 87,
+                            StartYear = 2009,
+                            Title = "Puzzle",
+                            Type = 0
+                        },
+                        new
+                        {
+                            Id = "tt2076307",
+                            Description = "",
+                            RatingId = 14,
+                            RuntimeMinutes = 90,
+                            StartYear = 2013,
+                            Title = "Puzzle",
+                            Type = 0
+                        },
+                        new
+                        {
+                            Id = "tt3492330",
+                            Description = "",
+                            RatingId = 15,
+                            RuntimeMinutes = 85,
+                            StartYear = 2014,
+                            Title = "Puzzle",
+                            Type = 0
+                        },
+                        new
+                        {
+                            Id = "tt6933454",
+                            Description = "",
+                            RatingId = 16,
+                            RuntimeMinutes = 103,
+                            StartYear = 2018,
+                            Title = "Puzzle",
+                            Type = 0
+                        },
+                        new
+                        {
+                            Id = "tt7220696",
+                            Description = "",
+                            RatingId = 17,
+                            RuntimeMinutes = 103,
+                            StartYear = 2018,
+                            Title = "Laugh or Die",
+                            Type = 0
+                        });
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieCategory", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("MovieId");
 
                     b.Property<int>("CategoryId");
 
-                    b.Property<string>("MovieId");
-
-                    b.HasKey("Id");
+                    b.HasKey("MovieId", "CategoryId");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("MovieId");
 
                     b.ToTable("MovieCategories");
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieDirector", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("MovieId");
 
                     b.Property<string>("DirectorId");
 
-                    b.Property<string>("MovieId");
-
-                    b.HasKey("Id");
+                    b.HasKey("MovieId", "DirectorId");
 
                     b.HasIndex("DirectorId");
-
-                    b.HasIndex("MovieId");
 
                     b.ToTable("MovieDirectors");
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieWriter", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
                     b.Property<string>("MovieId");
 
                     b.Property<string>("WriterId");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("MovieId");
+                    b.HasKey("MovieId", "WriterId");
 
                     b.HasIndex("WriterId");
 
@@ -704,7 +858,9 @@ namespace OnlineMovieStore.Data.Migrations
                 {
                     b.HasOne("OnlineMovieStore.Data.Tables.Rating", "Rating")
                         .WithMany("Movies")
-                        .HasForeignKey("RatingId");
+                        .HasForeignKey("RatingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieCategory", b =>
@@ -717,29 +873,39 @@ namespace OnlineMovieStore.Data.Migrations
 
                     b.HasOne("OnlineMovieStore.Data.Tables.Movie", "Movie")
                         .WithMany("Categories")
-                        .HasForeignKey("MovieId");
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieDirector", b =>
                 {
                     b.HasOne("OnlineMovieStore.Data.Tables.Director", "Director")
                         .WithMany("MovieDirectors")
-                        .HasForeignKey("DirectorId");
+                        .HasForeignKey("DirectorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("OnlineMovieStore.Data.Tables.Movie", "Movie")
                         .WithMany("MovieDirectors")
-                        .HasForeignKey("MovieId");
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieWriter", b =>
                 {
                     b.HasOne("OnlineMovieStore.Data.Tables.Movie", "Movie")
                         .WithMany("MovieWriters")
-                        .HasForeignKey("MovieId");
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("OnlineMovieStore.Data.Tables.Writer", "Writer")
                         .WithMany("MovieWriters")
-                        .HasForeignKey("WriterId");
+                        .HasForeignKey("WriterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

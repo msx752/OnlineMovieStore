@@ -10,8 +10,8 @@ using OnlineMovieStore.Data;
 namespace OnlineMovieStore.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190430160739_seed_directors")]
-    partial class seed_directors
+    [Migration("20190430173454_seed_ratings")]
+    partial class seed_ratings
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -368,55 +368,37 @@ namespace OnlineMovieStore.Data.Migrations
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieCategory", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("MovieId");
 
                     b.Property<int>("CategoryId");
 
-                    b.Property<string>("MovieId");
-
-                    b.HasKey("Id");
+                    b.HasKey("MovieId", "CategoryId");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("MovieId");
 
                     b.ToTable("MovieCategories");
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieDirector", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("MovieId");
 
                     b.Property<string>("DirectorId");
 
-                    b.Property<string>("MovieId");
-
-                    b.HasKey("Id");
+                    b.HasKey("MovieId", "DirectorId");
 
                     b.HasIndex("DirectorId");
-
-                    b.HasIndex("MovieId");
 
                     b.ToTable("MovieDirectors");
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieWriter", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
                     b.Property<string>("MovieId");
 
                     b.Property<string>("WriterId");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("MovieId");
+                    b.HasKey("MovieId", "WriterId");
 
                     b.HasIndex("WriterId");
 
@@ -438,6 +420,127 @@ namespace OnlineMovieStore.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Ratings");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AverageRating = 87.0,
+                            MovieId = "tt0133093",
+                            NumVotes = 1493180
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AverageRating = 72.0,
+                            MovieId = "tt0234215",
+                            NumVotes = 475351
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AverageRating = 78.0,
+                            MovieId = "tt0499549",
+                            NumVotes = 1036901
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AverageRating = 62.0,
+                            MovieId = "tt1775309",
+                            NumVotes = 41
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AverageRating = 16.0,
+                            MovieId = "tt1854506",
+                            NumVotes = 1538
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AverageRating = 25.0,
+                            MovieId = "tt8968844",
+                            NumVotes = 17
+                        },
+                        new
+                        {
+                            Id = 7,
+                            AverageRating = 67.0,
+                            MovieId = "tt9024440",
+                            NumVotes = 15
+                        },
+                        new
+                        {
+                            Id = 8,
+                            AverageRating = 64.0,
+                            MovieId = "tt0054395",
+                            NumVotes = 828
+                        },
+                        new
+                        {
+                            Id = 9,
+                            AverageRating = 67.0,
+                            MovieId = "tt7578416",
+                            NumVotes = 23
+                        },
+                        new
+                        {
+                            Id = 10,
+                            AverageRating = 54.0,
+                            MovieId = "tt7640234",
+                            NumVotes = 29
+                        },
+                        new
+                        {
+                            Id = 11,
+                            AverageRating = 61.0,
+                            MovieId = "tt0091805",
+                            NumVotes = 41
+                        },
+                        new
+                        {
+                            Id = 12,
+                            AverageRating = 64.0,
+                            MovieId = "tt0870915",
+                            NumVotes = 260
+                        },
+                        new
+                        {
+                            Id = 13,
+                            AverageRating = 67.0,
+                            MovieId = "tt1517238",
+                            NumVotes = 517
+                        },
+                        new
+                        {
+                            Id = 14,
+                            AverageRating = 68.0,
+                            MovieId = "tt2076307",
+                            NumVotes = 66
+                        },
+                        new
+                        {
+                            Id = 15,
+                            AverageRating = 58.0,
+                            MovieId = "tt3492330",
+                            NumVotes = 218
+                        },
+                        new
+                        {
+                            Id = 16,
+                            AverageRating = 67.0,
+                            MovieId = "tt6933454",
+                            NumVotes = 3404
+                        },
+                        new
+                        {
+                            Id = 17,
+                            AverageRating = 67.0,
+                            MovieId = "tt7220696",
+                            NumVotes = 391
+                        });
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.Writer", b =>
@@ -449,6 +552,83 @@ namespace OnlineMovieStore.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Writers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "nm0908624",
+                            FullName = "Edgar Wallace"
+                        },
+                        new
+                        {
+                            Id = "nm0251912",
+                            FullName = "Egon Eis"
+                        },
+                        new
+                        {
+                            Id = "nm0525742",
+                            FullName = "Wolfgang Lukschy"
+                        },
+                        new
+                        {
+                            Id = "nm0173775",
+                            FullName = "Lluís Josep Comerón"
+                        },
+                        new
+                        {
+                            Id = "nm0905152",
+                            FullName = "Lilly Wachowski"
+                        },
+                        new
+                        {
+                            Id = "nm0905154",
+                            FullName = "Lana Wachowski"
+                        },
+                        new
+                        {
+                            Id = "nm0000116",
+                            FullName = "James Cameron"
+                        },
+                        new
+                        {
+                            Id = "nm0807023",
+                            FullName = "Natalia Smirnoff"
+                        },
+                        new
+                        {
+                            Id = "nm0150043",
+                            FullName = "Ted Chalmers"
+                        },
+                        new
+                        {
+                            Id = "nm0827500",
+                            FullName = "David S. Sterling"
+                        },
+                        new
+                        {
+                            Id = "nm0956913",
+                            FullName = "Andrei Zinca"
+                        },
+                        new
+                        {
+                            Id = "nm0610219",
+                            FullName = "Oren Moverman"
+                        },
+                        new
+                        {
+                            Id = "nm0474289",
+                            FullName = "Heikki Kujanpää"
+                        },
+                        new
+                        {
+                            Id = "nm0718558",
+                            FullName = "Mikko Reitala"
+                        },
+                        new
+                        {
+                            Id = "nm10086396",
+                            FullName = "Bradley Alcime"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -521,29 +701,39 @@ namespace OnlineMovieStore.Data.Migrations
 
                     b.HasOne("OnlineMovieStore.Data.Tables.Movie", "Movie")
                         .WithMany("Categories")
-                        .HasForeignKey("MovieId");
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieDirector", b =>
                 {
                     b.HasOne("OnlineMovieStore.Data.Tables.Director", "Director")
                         .WithMany("MovieDirectors")
-                        .HasForeignKey("DirectorId");
+                        .HasForeignKey("DirectorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("OnlineMovieStore.Data.Tables.Movie", "Movie")
                         .WithMany("MovieDirectors")
-                        .HasForeignKey("MovieId");
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.MovieWriter", b =>
                 {
                     b.HasOne("OnlineMovieStore.Data.Tables.Movie", "Movie")
                         .WithMany("MovieWriters")
-                        .HasForeignKey("MovieId");
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("OnlineMovieStore.Data.Tables.Writer", "Writer")
                         .WithMany("MovieWriters")
-                        .HasForeignKey("WriterId");
+                        .HasForeignKey("WriterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

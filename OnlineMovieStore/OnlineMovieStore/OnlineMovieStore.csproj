@@ -18,6 +18,18 @@
     <Compile Remove="Data\Migrations\20190430153310_seedtest1.Designer.cs" />
     <Compile Remove="Data\Migrations\20190430161338_nullable_ratingProp.cs" />
     <Compile Remove="Data\Migrations\20190430161338_nullable_ratingProp.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190430163207_seed_moviewriters.cs" />
+    <Compile Remove="Data\Migrations\20190430163207_seed_moviewriters.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190430163230_seed_moviedirectors.cs" />
+    <Compile Remove="Data\Migrations\20190430163230_seed_moviedirectors.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190430165706_changes.cs" />
+    <Compile Remove="Data\Migrations\20190430165706_changes.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190430170919_addson.cs" />
+    <Compile Remove="Data\Migrations\20190430170919_addson.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190430172101_tables.cs" />
+    <Compile Remove="Data\Migrations\20190430172101_tables.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190430172231_tables.cs" />
+    <Compile Remove="Data\Migrations\20190430172231_tables.Designer.cs" />
   </ItemGroup>
 
 

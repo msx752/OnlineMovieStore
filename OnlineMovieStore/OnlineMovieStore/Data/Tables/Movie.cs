@@ -15,9 +15,7 @@ namespace OnlineMovieStore.Data.Tables
             Type = MovieType.movie;
             Categories = new HashSet<MovieCategory>();
             MovieDirectors = new HashSet<MovieDirector>();
-            
-             
-               MovieWriters = new HashSet<MovieWriter>();
+            MovieWriters = new HashSet<MovieWriter>();
         }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -29,11 +27,11 @@ namespace OnlineMovieStore.Data.Tables
         public int RuntimeMinutes { get; set; }
         [Required]
         public int StartYear { get; set; }
-         public ICollection<MovieDirector> MovieDirectors { get; set; }
+        public ICollection<MovieDirector> MovieDirectors { get; set; }
         public ICollection<MovieWriter> MovieWriters { get; set; }
         public string Description { get; set; }
-        public int? RatingId { get; set; }
-        public Rating? Rating { get; set; }
+        public int RatingId { get; set; }
+        public Rating Rating { get; set; }
         public MovieType Type { get; set; }
     }
 }

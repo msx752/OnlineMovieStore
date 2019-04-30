@@ -20,68 +20,70 @@ namespace OnlineMovieStore.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
-        
+
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-           
+
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Rating>().HasKey(f => f.Id);
-            modelBuilder.Entity<Movie>().HasKey(f => f.Id);
             modelBuilder.Entity<Category>().HasKey(f => f.Id);
             modelBuilder.Entity<Writer>().HasKey(f => f.Id);
             modelBuilder.Entity<Director>().HasKey(f => f.Id);
-            modelBuilder.Entity<MovieWriter>().HasKey(f => f.Id);
-            modelBuilder.Entity<MovieDirector>().HasKey(f => f.Id);
-            modelBuilder.Entity<MovieCategory>().HasKey(f => f.Id);
 
             // one to many
+            modelBuilder.Entity<Movie>().HasKey(f => f.Id);
             modelBuilder.Entity<Movie>()
               .HasOne<Rating>(s => s.Rating)
               .WithMany(g => g.Movies)
               .HasForeignKey(s => s.RatingId);
 
             // many to many 
+            modelBuilder.Entity<MovieCategory>().HasKey(f => new { f.MovieId, f.CategoryId });
             modelBuilder.Entity<MovieCategory>()
-             .HasOne<Movie>(s => s.Movie)
-             .WithMany(g => g.Categories)
-             .HasForeignKey(s => s.MovieId);
-            modelBuilder.Entity<MovieCategory>()
-             .HasOne<Category>(s => s.Category)
-             .WithMany(g => g.Categories)
-             .HasForeignKey(s => s.CategoryId);
+              .HasOne<Movie>(s => s.Movie)
+              .WithMany(g => g.Categories)
+              .HasForeignKey(s => s.MovieId);
+             modelBuilder.Entity<MovieCategory>()
+              .HasOne<Category>(s => s.Category)
+              .WithMany(g => g.Categories)
+              .HasForeignKey(s => s.CategoryId);
+
             //
 
             // many to many 
+            modelBuilder.Entity<MovieDirector>().HasKey(f => new { f.MovieId, f.DirectorId });
             modelBuilder.Entity<MovieDirector>()
-             .HasOne<Movie>(s => s.Movie)
-             .WithMany(g => g.MovieDirectors)
-             .HasForeignKey(s => s.MovieId);
-            modelBuilder.Entity<MovieDirector>()
-             .HasOne<Director>(s => s.Director)
-             .WithMany(g => g.MovieDirectors)
-             .HasForeignKey(s => s.DirectorId);
+              .HasOne<Movie>(s => s.Movie)
+              .WithMany(g => g.MovieDirectors)
+              .HasForeignKey(s => s.MovieId);
+             modelBuilder.Entity<MovieDirector>()
+              .HasOne<Director>(s => s.Director)
+              .WithMany(g => g.MovieDirectors)
+              .HasForeignKey(s => s.DirectorId);
             //
 
             // many to many 
+            modelBuilder.Entity<MovieWriter>().HasKey(f => new { f.MovieId, f.WriterId });
             modelBuilder.Entity<MovieWriter>()
-             .HasOne<Movie>(s => s.Movie)
-             .WithMany(g => g.MovieWriters)
-             .HasForeignKey(s => s.MovieId);
-            modelBuilder.Entity<MovieWriter>()
-             .HasOne<Writer>(s => s.Writer)
-             .WithMany(g => g.MovieWriters)
-             .HasForeignKey(s => s.WriterId);
+              .HasOne<Movie>(s => s.Movie)
+              .WithMany(g => g.MovieWriters)
+              .HasForeignKey(s => s.MovieId);
+             modelBuilder.Entity<MovieWriter>()
+              .HasOne<Writer>(s => s.Writer)
+              .WithMany(g => g.MovieWriters)
+              .HasForeignKey(s => s.WriterId);
             //
-            modelBuilder.SeedCategories();
+
+           modelBuilder.SeedCategories();
             modelBuilder.SeedDirectors();
-            modelBuilder.SeedWriters();
-            modelBuilder.SeedRatings();
-            modelBuilder.SeedMovies();
-            //modelBuilder.SeedMovieWriters();
-            //modelBuilder.SeedmovieDirectors();
+          modelBuilder.SeedWriters();
+          modelBuilder.SeedRatings();
+             modelBuilder.SeedMovies();
+             modelBuilder.SeedMovieWriters();
+             /*modelBuilder.SeedmovieDirectors();*/
             base.OnModelCreating(modelBuilder);
         }
 

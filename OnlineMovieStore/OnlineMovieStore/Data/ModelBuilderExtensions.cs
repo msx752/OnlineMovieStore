@@ -1,9 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnlineMovieStore.Data.Tables;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace OnlineMovieStore.Data
 {
@@ -53,19 +49,18 @@ namespace OnlineMovieStore.Data
         public static void SeedmovieDirectors(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<MovieDirector>().HasData(
-                new MovieDirector() { Id = 1, MovieId = "tt0054395", DirectorId = "nm0901138" },
-                new MovieDirector() { Id = 2, MovieId = "tt0091805", DirectorId = "nm0173775" },
-                new MovieDirector() { Id = 3, MovieId = "tt0133093", DirectorId = "nm0905152" },
-                new MovieDirector() { Id = 4, MovieId = "tt0133093", DirectorId = "nm0905154" },
-                new MovieDirector() { Id = 5, MovieId = "tt0234215", DirectorId = "nm0905154" },
-                new MovieDirector() { Id = 6, MovieId = "tt0234215", DirectorId = "nm0905152" },
-                new MovieDirector() { Id = 7, MovieId = "tt0499549", DirectorId = "nm0000116" },
-                new MovieDirector() { Id = 8, MovieId = "tt1517238", DirectorId = "nm0807023" },
-                new MovieDirector() { Id = 9, MovieId = "tt1854506", DirectorId = "nm0006955" },
-                new MovieDirector() { Id = 10, MovieId = "tt2076307", DirectorId = "nm0956913" },
-                new MovieDirector() { Id = 11, MovieId = "tt7220696", DirectorId = "nm0474289" },
-                new MovieDirector() { Id = 12, MovieId = "tt8923874", DirectorId = "nm10086396" },
-                new MovieDirector() { Id = 13, MovieId = "tt8984748", DirectorId = "nm10114969" }
+                new MovieDirector() { MovieId = "tt0054395", DirectorId = "nm0901138" },
+                new MovieDirector() { MovieId = "tt0133093", DirectorId = "nm0905152" },
+                new MovieDirector() { MovieId = "tt0133093", DirectorId = "nm0905154" },
+                new MovieDirector() { MovieId = "tt0234215", DirectorId = "nm0905154" },
+                new MovieDirector() { MovieId = "tt0234215", DirectorId = "nm0905152" },
+                new MovieDirector() { MovieId = "tt0499549", DirectorId = "nm0000116" },
+                new MovieDirector() { MovieId = "tt1517238", DirectorId = "nm0807023" },
+                new MovieDirector() { MovieId = "tt1854506", DirectorId = "nm0006955" },
+                new MovieDirector() { MovieId = "tt2076307", DirectorId = "nm0956913" },
+                new MovieDirector() { MovieId = "tt7220696", DirectorId = "nm0474289" },
+                new MovieDirector() { MovieId = "tt8923874", DirectorId = "nm10086396" },
+                new MovieDirector() { MovieId = "tt8984748", DirectorId = "nm10114969" }
 
                 );
 
@@ -73,24 +68,24 @@ namespace OnlineMovieStore.Data
         public static void SeedMovieWriters(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<MovieWriter>().HasData(
-                new MovieWriter() { Id = 1, MovieId = "tt0054395", WriterId = "nm0908624" },
-                new MovieWriter() { Id = 2, MovieId = "tt0054395", WriterId = "nm0251912" },
-                new MovieWriter() { Id = 3, MovieId = "tt0054395", WriterId = "nm0525742" },
-                new MovieWriter() { Id = 4, MovieId = "tt0091805", WriterId = "nm0173775" },
-                new MovieWriter() { Id = 5, MovieId = "tt0133093", WriterId = "nm0905152" },
-                new MovieWriter() { Id = 6, MovieId = "tt0133093", WriterId = "nm0905154" },
-                new MovieWriter() { Id = 7, MovieId = "tt0234215", WriterId = "nm0905152" },
-                new MovieWriter() { Id = 8, MovieId = "tt0234215", WriterId = "nm0905154" },
-                new MovieWriter() { Id = 9, MovieId = "tt0499549", WriterId = "nm0000116" },
-                new MovieWriter() { Id = 10, MovieId = "tt1517238", WriterId = "nm0807023" },
-                new MovieWriter() { Id = 11, MovieId = "tt1854506", WriterId = "nm0150043" },
-                new MovieWriter() { Id = 12, MovieId = "tt1854506", WriterId = "nm0827500" },
-                new MovieWriter() { Id = 13, MovieId = "tt2076307", WriterId = "nm0956913" },
-                new MovieWriter() { Id = 14, MovieId = "tt6933454", WriterId = "nm0610219" },
-                new MovieWriter() { Id = 15, MovieId = "tt6933454", WriterId = "nm0807023" },
-                new MovieWriter() { Id = 16, MovieId = "tt7220696", WriterId = "nm0474289" },
-                new MovieWriter() { Id = 17, MovieId = "tt7220696", WriterId = "nm0718558" },
-                new MovieWriter() { Id = 18, MovieId = "tt8923874", WriterId = "nm10086396" }
+                new MovieWriter() { MovieId = "tt0054395", WriterId = "nm0908624" },
+                new MovieWriter() { MovieId = "tt0054395", WriterId = "nm0251912" },
+                new MovieWriter() { MovieId = "tt0054395", WriterId = "nm0525742" },
+                new MovieWriter() { MovieId = "tt0091805", WriterId = "nm0173775" },
+                new MovieWriter() { MovieId = "tt0133093", WriterId = "nm0905152" },
+                new MovieWriter() { MovieId = "tt0133093", WriterId = "nm0905154" },
+                new MovieWriter() { MovieId = "tt0234215", WriterId = "nm0905152" },
+                new MovieWriter() { MovieId = "tt0234215", WriterId = "nm0905154" },
+                new MovieWriter() { MovieId = "tt0499549", WriterId = "nm0000116" },
+                new MovieWriter() { MovieId = "tt1517238", WriterId = "nm0807023" },
+                new MovieWriter() { MovieId = "tt1854506", WriterId = "nm0150043" },
+                new MovieWriter() { MovieId = "tt1854506", WriterId = "nm0827500" },
+                new MovieWriter() { MovieId = "tt2076307", WriterId = "nm0956913" },
+                new MovieWriter() { MovieId = "tt6933454", WriterId = "nm0610219" },
+                new MovieWriter() { MovieId = "tt6933454", WriterId = "nm0807023" },
+                new MovieWriter() { MovieId = "tt7220696", WriterId = "nm0474289" },
+                new MovieWriter() { MovieId = "tt7220696", WriterId = "nm0718558" },
+                new MovieWriter() { MovieId = "tt8923874", WriterId = "nm10086396" }
 
                 );
 

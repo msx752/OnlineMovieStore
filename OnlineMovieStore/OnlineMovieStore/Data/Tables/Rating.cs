@@ -8,7 +8,6 @@ namespace OnlineMovieStore.Data.Tables
 {
     public class Rating
     {
-        [Key]
         public int Id { get; set; }
         public double AverageRating { get; set; }
         public int NumVotes { get; set; }
