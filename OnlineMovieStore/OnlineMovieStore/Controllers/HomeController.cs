@@ -40,6 +40,11 @@ namespace OnlineMovieStore.Controllers
         {
             return View();
         }
+        public IActionResult Search(string searchText)
+        {
+            var searchResult = MovieRepo.GetAll().Where(f=>f.Title.Contains(searchText,StringComparison.InvariantCultureIgnoreCase)).ToList();
+            return View(searchResult);
+        }
         [Route("Home/Filtered/{Id}")]
         public IActionResult Filtered(int Id)
         {
