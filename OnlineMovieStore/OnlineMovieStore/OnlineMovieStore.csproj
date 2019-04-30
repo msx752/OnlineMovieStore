@@ -32,6 +32,8 @@
     <Compile Remove="Data\Migrations\20190430172231_tables.Designer.cs" />
     <Compile Remove="Data\Migrations\20190430173712_seed_moviedirectors.cs" />
     <Compile Remove="Data\Migrations\20190430173712_seed_moviedirectors.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190430175311_seed_moviecategories.cs" />
+    <Compile Remove="Data\Migrations\20190430175311_seed_moviecategories.Designer.cs" />
   </ItemGroup>
 
 

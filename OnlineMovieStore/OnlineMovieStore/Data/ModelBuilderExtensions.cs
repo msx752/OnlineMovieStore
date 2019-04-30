@@ -59,8 +59,8 @@ namespace OnlineMovieStore.Data
                 new MovieDirector() { MovieId = "tt1854506", DirectorId = "nm0006955" },
                 new MovieDirector() { MovieId = "tt2076307", DirectorId = "nm0956913" },
                 new MovieDirector() { MovieId = "tt7220696", DirectorId = "nm0474289" }
-               // new MovieDirector() { MovieId = "tt8923874", DirectorId = "nm10086396" },
-               // new MovieDirector() { MovieId = "tt8984748", DirectorId = "nm10114969" }
+                // new MovieDirector() { MovieId = "tt8923874", DirectorId = "nm10086396" },
+                // new MovieDirector() { MovieId = "tt8984748", DirectorId = "nm10114969" }
 
                 );
 
@@ -85,7 +85,7 @@ namespace OnlineMovieStore.Data
                 new MovieWriter() { MovieId = "tt6933454", WriterId = "nm0807023" },
                 new MovieWriter() { MovieId = "tt7220696", WriterId = "nm0474289" },
                 new MovieWriter() { MovieId = "tt7220696", WriterId = "nm0718558" }
-               // new MovieWriter() { MovieId = "tt8923874", WriterId = "nm10086396" }
+                // new MovieWriter() { MovieId = "tt8923874", WriterId = "nm10086396" }
 
                 );
 
@@ -201,7 +201,44 @@ namespace OnlineMovieStore.Data
                 new Movie() { Id = "tt7220696", RatingId = 17, RuntimeMinutes = 103, StartYear = 2018, Title = "Laugh or Die", Type = Enums.MovieType.movie, Description = "" }
                 );
         }
-
+        public static void SeedMovieCategories(this ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<MovieCategory>().HasData(
+                new MovieCategory() { MovieId = "tt0133093", CategoryId = 1 },
+                new MovieCategory() { MovieId = "tt0234215", CategoryId = 1 },
+                new MovieCategory() { MovieId = "tt0499549", CategoryId = 1 },
+                new MovieCategory() { MovieId = "tt0499549", CategoryId = 3 },
+                new MovieCategory() { MovieId = "tt0499549", CategoryId = 4 },
+                new MovieCategory() { MovieId = "tt1775309", CategoryId = 5 },
+                new MovieCategory() { MovieId = "tt1854506", CategoryId = 5 },
+                new MovieCategory() { MovieId = "tt8968844", CategoryId = 5 },
+                new MovieCategory() { MovieId = "tt9024440", CategoryId = 10 },
+                new MovieCategory() { MovieId = "tt9024440", CategoryId = 7 },
+                new MovieCategory() { MovieId = "tt9024440", CategoryId = 5 },
+                new MovieCategory() { MovieId = "tt0054395", CategoryId = 11 },
+                new MovieCategory() { MovieId = "tt0054395", CategoryId = 5 },
+                new MovieCategory() { MovieId = "tt0054395", CategoryId = 8 },
+                new MovieCategory() { MovieId = "tt7578416", CategoryId = 11 },
+                new MovieCategory() { MovieId = "tt7640234", CategoryId = 3 },
+                new MovieCategory() { MovieId = "tt7640234", CategoryId = 6 },
+                new MovieCategory() { MovieId = "tt7640234", CategoryId = 5 },
+                new MovieCategory() { MovieId = "tt0091805", CategoryId = 1 },
+                new MovieCategory() { MovieId = "tt0091805", CategoryId = 11 },
+                new MovieCategory() { MovieId = "tt0091805", CategoryId = 12 },
+                new MovieCategory() { MovieId = "tt0870915", CategoryId = 11 },
+                new MovieCategory() { MovieId = "tt0870915", CategoryId = 12 },
+                new MovieCategory() { MovieId = "tt1517238", CategoryId = 6 },
+                new MovieCategory() { MovieId = "tt2076307", CategoryId = 6 },
+                new MovieCategory() { MovieId = "tt2076307", CategoryId = 7 },
+                new MovieCategory() { MovieId = "tt2076307", CategoryId = 13 },
+                new MovieCategory() { MovieId = "tt3492330", CategoryId = 5 },
+                new MovieCategory() { MovieId = "tt3492330", CategoryId = 12 },
+                new MovieCategory() { MovieId = "tt6933454", CategoryId = 6 },
+                new MovieCategory() { MovieId = "tt7220696", CategoryId = 6 },
+                new MovieCategory() { MovieId = "tt7220696", CategoryId = 14 },
+                new MovieCategory() { MovieId = "tt7220696", CategoryId = 15 }
+            );
+        }
 
 
     }

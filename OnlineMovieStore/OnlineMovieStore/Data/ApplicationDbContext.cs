@@ -46,10 +46,10 @@ namespace OnlineMovieStore.Data
               .HasOne<Movie>(s => s.Movie)
               .WithMany(g => g.Categories)
               .HasForeignKey(s => s.MovieId);
-             modelBuilder.Entity<MovieCategory>()
-              .HasOne<Category>(s => s.Category)
-              .WithMany(g => g.Categories)
-              .HasForeignKey(s => s.CategoryId);
+            modelBuilder.Entity<MovieCategory>()
+             .HasOne<Category>(s => s.Category)
+             .WithMany(g => g.Categories)
+             .HasForeignKey(s => s.CategoryId);
 
             //
 
@@ -59,10 +59,10 @@ namespace OnlineMovieStore.Data
               .HasOne<Movie>(s => s.Movie)
               .WithMany(g => g.MovieDirectors)
               .HasForeignKey(s => s.MovieId);
-             modelBuilder.Entity<MovieDirector>()
-              .HasOne<Director>(s => s.Director)
-              .WithMany(g => g.MovieDirectors)
-              .HasForeignKey(s => s.DirectorId);
+            modelBuilder.Entity<MovieDirector>()
+             .HasOne<Director>(s => s.Director)
+             .WithMany(g => g.MovieDirectors)
+             .HasForeignKey(s => s.DirectorId);
             //
 
             // many to many 
@@ -71,19 +71,20 @@ namespace OnlineMovieStore.Data
               .HasOne<Movie>(s => s.Movie)
               .WithMany(g => g.MovieWriters)
               .HasForeignKey(s => s.MovieId);
-             modelBuilder.Entity<MovieWriter>()
-              .HasOne<Writer>(s => s.Writer)
-              .WithMany(g => g.MovieWriters)
-              .HasForeignKey(s => s.WriterId);
+            modelBuilder.Entity<MovieWriter>()
+             .HasOne<Writer>(s => s.Writer)
+             .WithMany(g => g.MovieWriters)
+             .HasForeignKey(s => s.WriterId);
             //
 
-           modelBuilder.SeedCategories();
+            modelBuilder.SeedCategories();
             modelBuilder.SeedDirectors();
-          modelBuilder.SeedWriters();
-          modelBuilder.SeedRatings();
-             modelBuilder.SeedMovies();
-             modelBuilder.SeedMovieWriters();
-             modelBuilder.SeedmovieDirectors();
+            modelBuilder.SeedWriters();
+            modelBuilder.SeedRatings();
+            modelBuilder.SeedMovies();
+            modelBuilder.SeedMovieWriters();
+            modelBuilder.SeedmovieDirectors();
+            modelBuilder.SeedMovieCategories();
             base.OnModelCreating(modelBuilder);
         }
 
