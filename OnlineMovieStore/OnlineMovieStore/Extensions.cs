@@ -13,15 +13,16 @@ namespace OnlineMovieStore
         public static Microsoft.AspNetCore.Html.IHtmlContent DrawStars(this IHtmlHelper htmlHelper, OnlineMovieStore.Data.Tables.Rating rating)
         {
             string html = "";
-            var star = Math.Round(((rating.AverageRating / 100) / 2) * 10);
-            for (int i = 1; i <= 5; i++)
+            var stars = (((rating.AverageRating / 100)*0.5))*10;
+            var star = Math.Round(stars,MidpointRounding.AwayFromZero);
+            for (int i = 0; i < star; i++)
             {
-                string IsChecked = "";
-                if (star <= i && star != 0)
-                {
-                    IsChecked = "star-checked";
-                }
-                html += $"<span class=\"fa fa-star {IsChecked}\"></span>";
+                html += $"<span class=\"fa fa-star star-checked\"></span>";
+            }
+            var rslt = 5 - star;
+            for (int i = 0; i < rslt; i++)
+            {
+                html += $"<span class=\"fa fa-star\"></span>";
             }
 
             return new HtmlString(html);
