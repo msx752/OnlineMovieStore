@@ -940,7 +940,7 @@ A repressed middle aged man realizes that his life had become one of misery and 
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("PaymentHistory");
+                    b.ToTable("Payments");
                 });
 
             modelBuilder.Entity("OnlineMovieStore.Data.Tables.Rating", b =>
