@@ -7,14 +7,24 @@
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
+
+        var bskt = basketRepo.Get(User.GetUserId());
+        if (bskt == null)
+        {
+
+            bskt = basketRepo.Add(new Basket() { UserId = User.GetUserId() });
+
+        }
+        var basketItemCount = bskt.UserBasket.Ids.Count;
+
         <li class="nav-item">
-            <a style="margin-right: 15px;" class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="Basket" title="Shopping Basket"><i class="fas fa-2x fa-shopping-cart"></i><span class="badge badge-primary">9</span></a>
+            <a style="margin-right: 15px;" class="nav-link text-dark" asp-area="" asp-controller="Shop" asp-action="Basket" title="Shopping Basket"><i class="fas fa-2x fa-shopping-cart"></i><span class="badge badge-primary">@basketItemCount</span></a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Profile"><i class="fas fa-user-circle fa-2x"></i></a>
         </li>
         <li class="nav-item">
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Movie", new { area = "" })">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action(" Index", "Movie" , new { area="" })">
                 <button type="submit" class="nav-link btn btn-link text-dark"><i class="fas fa-sign-out-alt fa-2x"></i></button>
             </form>
         </li>

@@ -10,12 +10,14 @@ namespace OnlineMovieStore.Controllers
 {
     public class ShopController : Controller
     {
+        public MovieManager MovieRepo { get; set; }
         public BasketManager BasketRepo { get; set; }
         public UserManager UserRepo { get; set; }
-        public ShopController(BasketManager _basketRepo, UserManager _userRepo)
+        public ShopController(BasketManager _basketRepo, UserManager _userRepo, MovieManager _movieRepo)
         {
             BasketRepo = _basketRepo;
             UserRepo = _userRepo;
+            MovieRepo = _movieRepo;
         }
         public IActionResult Index()
         {
@@ -33,6 +35,22 @@ namespace OnlineMovieStore.Controllers
                 UserRepo.SaveChanges();
             }
             return View(user.Basket);
+        }
+        public IActionResult AddToBasket(string Id)
+        {
+            var movie = MovieRepo.Get(Id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+            var usrBasket = BasketRepo.Get(User.GetUserId());
+            if (!usrBasket.UserBasket.Ids.Contains(Id))
+            {
+                usrBasket.UserBasket.Ids.Add(Id);
+                usrBasket.UserBasket = usrBasket.UserBasket;
+                BasketRepo.SaveChanges();
+            }
+            return this.RedirectToAction("Basket");
         }
     }
 }

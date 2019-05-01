@@ -31,7 +31,7 @@
             <p><b>Price: </b><span>@(Model.Movie.UsdPrice)<b>$</b></span></p>
             @if (User.Identity.IsAuthenticated)
             {
-                <a href="#" class="btn btn-primary">Add To Basket</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Shop" asp-action="AddToBasket" asp-route-id="@(Model.Movie.Id)">Add To Basket</a>
                 <a href="#" class="btn btn-success">Buy</a>
             }
             else

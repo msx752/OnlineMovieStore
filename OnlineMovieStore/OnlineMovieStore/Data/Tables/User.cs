@@ -8,12 +8,27 @@ using System.Threading.Tasks;
 namespace OnlineMovieStore.Data.Tables
 {
     [Table("AspNetUsers")]
-    public class User: IdentityUser
+    public class User : IdentityUser
     {
         public User()
         {
-            
+
         }
-        public Basket Basket { get; set; }
+        private Basket _basket = null;
+        public Basket Basket
+        {
+            get
+            {
+                if (_basket == null)
+                {
+                    _basket = new Basket();
+                }
+                return _basket;
+            }
+            set
+            {
+                _basket = value;
+            }
+        }
     }
 }

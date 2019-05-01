@@ -15,11 +15,17 @@ namespace OnlineMovieStore.Repositories
         {
             _context = context;
         }
+        public Basket Add(Basket basket)
+        {
+            var bst = _context.Baskets.Add(basket);
+            SaveChanges();
+            return bst.Entity;
+        }
         public Basket Get(object _id)
         {
             var id = (int)_id;
             return _context.Baskets
-                .Include(f=>f.User)
+                .Include(f => f.User)
                 .FirstOrDefault(e => e.Id == id);
         }
         public Basket Get(string userId)
