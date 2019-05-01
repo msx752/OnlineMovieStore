@@ -9,6 +9,7 @@ namespace OnlineMovieStore.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
+        public DbSet<User> Users { get; set; }
         public DbSet<Rating> Ratings { get; set; }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -20,7 +21,7 @@ namespace OnlineMovieStore.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
-
+         
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

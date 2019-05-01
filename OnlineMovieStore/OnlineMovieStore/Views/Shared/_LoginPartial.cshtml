@@ -1,12 +1,13 @@
 @using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@using OnlineMovieStore.Data.Tables
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
 
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-controller="Shop" asp-page="Index" title="Shopping Basket"><i class="fas fa-2x fa-shopping-cart"></i></a>
+            <a class="nav-link text-dark" asp-area="Home" asp-page="/Home/Index" title="Shopping Basket"><i class="fas fa-2x fa-shopping-cart"></i></a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Profile"><i class="fas fa-user-circle fa-2x"></i></a>
