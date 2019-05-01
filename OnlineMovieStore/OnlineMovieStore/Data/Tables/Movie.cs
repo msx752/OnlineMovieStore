@@ -33,5 +33,7 @@ namespace OnlineMovieStore.Data.Tables
         public int RatingId { get; set; }
         public Rating Rating { get; set; }
         public MovieType Type { get; set; }
+
+        public decimal UsdPrice { get; set; }
     }
 }
