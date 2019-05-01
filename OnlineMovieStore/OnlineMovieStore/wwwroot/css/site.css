@@ -139,16 +139,16 @@ body {
     box-shadow: -1px 3px 19px 7px rgba(0,0,0,0.75);
 }
 .average-rating {
-    left: 28%;
+    left: 23% !important;
     top: 91%;
     position: absolute;
     -webkit-box-shadow: -1px 3px 32px -3px rgba(0,0,0,0.75);
     -moz-box-shadow: -1px 3px 32px -3px rgba(0,0,0,0.75);
     box-shadow: -1px 3px 32px -3px rgba(0,0,0,0.75);
-    color:white;
-    background-color:black;
+    color: white;
+    background-color: black;
     opacity: 0.6;
-    padding:1px;
+    padding: 1px;
 }
 .star-checked {
     color: orange;

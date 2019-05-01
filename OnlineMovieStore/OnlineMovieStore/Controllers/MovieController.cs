@@ -10,11 +10,11 @@ using OnlineMovieStore.Repositories;
 
 namespace OnlineMovieStore.Controllers
 {
-    public class HomeController : Controller
+    public class MovieController : Controller
     {
         public IDataRepository<Movie> MovieRepo { get; set; }
         public IDataRepository<Category> CatRepo { get; set; }
-        public HomeController(IDataRepository<Movie> _movieRepo, IDataRepository<Category> _catRepo)
+        public MovieController(IDataRepository<Movie> _movieRepo, IDataRepository<Category> _catRepo)
         {
             MovieRepo = _movieRepo;
             CatRepo = _catRepo;
@@ -36,7 +36,8 @@ namespace OnlineMovieStore.Controllers
             return View(MovieRepo.GetAll().Take(4).ToList());
         }
 
-        public IActionResult ViewDetail()
+        [Route("Movie/{Id}")]
+        public IActionResult ViewDetail(string Id)
         {
             return View();
         }
@@ -45,7 +46,7 @@ namespace OnlineMovieStore.Controllers
             var searchResult = MovieRepo.GetAll().Where(f=>f.Title.Contains(searchText,StringComparison.InvariantCultureIgnoreCase)).ToList();
             return View(searchResult);
         }
-        [Route("Home/Filtered/{Id}")]
+        [Route("Movie/Filtered/{Id}")]
         public IActionResult Filtered(int Id)
         {
             FilteredViewModel viewModel = new FilteredViewModel();

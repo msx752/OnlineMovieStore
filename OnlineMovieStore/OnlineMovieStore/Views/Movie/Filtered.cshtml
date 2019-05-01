@@ -3,17 +3,18 @@
     ViewData["Title"] = $"Category: {Model.CategoryName}";
 }
 
-    <section class="filtered" id="filtered">
-        <h2>@Model.CategoryName</h2>
-        <div class="row">
-            @{
-                foreach (var item in Model.Filtered)
-                {
-                    <div class="col-sm-2 hvr-shadow-radial">
-                        <article class="card rounded">
-                            <header class="title-header">
-                                <h3 class="text-center">@(item.Title)</h3>
-                            </header>
+<section class="filtered" id="filtered">
+    <h2>@Model.CategoryName</h2>
+    <div class="row">
+        @{
+            foreach (var item in Model.Filtered)
+            {
+                <div class="col-sm-2 hvr-shadow-radial">
+                    <article class="card rounded">
+                        <header class="title-header">
+                            <h3 class="text-center">@(item.Title)</h3>
+                        </header>
+                        <a style="color:white;">
                             <div class="card-block">
                                 <div class="img-card">
                                     <img src="~/img/@(item.Id).png" alt="@(item.Title)" class="w-100" />
@@ -21,15 +22,16 @@
                                         @Html.DrawStars(item.Rating)
                                     </div>
                                     <div class="view-detail" style="display:none;">
-                                        <button class="btn btn-sm btn-danger btn-block"><i class="fa fa-eye"></i> View Detail</button>
+                                        <i class="fa fa-search fa-3x"></i>
                                     </div>
                                 </div>
                             </div>
-                        </article>
-                    </div>
-                }
+                        </a>
+                    </article>
+                </div>
             }
-        </div>
-    </section>
+        }
+    </div>
+</section>
 
 

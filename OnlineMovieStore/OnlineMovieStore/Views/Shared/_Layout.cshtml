@@ -46,7 +46,7 @@
     <header>
         <nav class="navbar navbar-fixed-top navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 ">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">OnlineMovieStore</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Movie" asp-action="Index">OnlineMovieStore</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -55,7 +55,7 @@
                     <partial name="_LoginPartial" />
                     <ul class="nav navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Movie" asp-action="Index">Home</a>
                         </li>
                         <li class="dropdown">
                             <a class="dropdown-toggle btn" data-toggle="dropdown" href="#">
@@ -67,21 +67,21 @@
                                     var ls = catRepo.GetAll();
                                     foreach (var item in ls)
                                     {
-                                        <li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Filtered" asp-route-id="@(item.Id)">@(item.Name)</a></li>
+                                        <li><a class="nav-link text-dark" asp-area="" asp-controller="Movie" asp-action="Filtered" asp-route-id="@(item.Id)">@(item.Name)</a></li>
                                     }
                                 }
 
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="HighRatings">High Ratings</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Movie" asp-action="HighRatings">High Ratings</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="RecentlyAdded">Recently Added</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Movie" asp-action="RecentlyAdded">Recently Added</a>
                         </li>
                         <li>
 
-                            <form class="navbar-form navbar-left" asp-controller="Home" asp-action="Search">
+                            <form class="navbar-form navbar-left" asp-controller="Movie" asp-action="Search">
                                 <div class="input-group">
                                     <input id="searchText"name="searchText" type="text" class="form-control" placeholder="Search Movie...">
                                     <span class="input-group-btn">
@@ -102,7 +102,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2019 - OnlineMovieStore - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2019 - OnlineMovieStore - <a asp-area="" asp-controller="Movie" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
 

@@ -1,0 +1,99 @@
+﻿@model OnlineMovieStore.Models.IndexViewModel
+@{
+    ViewData["Title"] = "Online Movie Store";
+
+}
+<section class="highratings" id="highratings">
+    <h2>High Ratings</h2>
+    <div class="row">
+        @{
+            foreach (var item in Model.HighRatings)
+            {
+                <div class="col-sm-2 hvr-shadow-radial">
+                    <article class="card rounded">
+                        <header class="title-header">
+                            <h3 class="text-center">@(item.Title)</h3>
+                        </header>
+                        <a style="color:white;" asp-area="" asp-controller="Movie" asp-action="ViewDetail" asp-route-id="@(item.Id)">
+                            <div class="card-block">
+                                <div class="img-card">
+                                    <img src="~/img/@(item.Id).png" alt="@(item.Title)" class="w-100" />
+                                    <div class="average-rating rounded">
+                                        @Html.DrawStars(item.Rating)
+                                    </div>
+                                    <div class="view-detail" style="display:none;">
+                                        <i class="fa fa-search fa-3x"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+            }
+        }
+    </div>
+</section>
+
+<section class="movies" id="movies">
+    <h2>Movies</h2>
+    <div class="row">
+        @{
+            foreach (var item in Model.All)
+            {
+                <div class="col-sm-2 hvr-shadow-radial">
+                            <article class="card rounded">
+                                <header class="title-header">
+                                    <h3 class="text-center">@(item.Title)</h3>
+                                </header>
+                                <a style="color:white;">
+                                    <div class="card-block">
+                                        <div class="img-card">
+                                            <img src="~/img/@(item.Id).png" alt="@(item.Title)" class="w-100" />
+                                            <div class="average-rating rounded">
+                                                @Html.DrawStars(item.Rating)
+                                            </div>
+                                            <div class="view-detail" style="display:none;">
+                                                <i class="fa fa-search fa-3x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </article>
+                </div>
+            }
+        }
+    </div>
+</section>
+
+<section class="movies" id="movies">
+    <h2>Recently Added</h2>
+    <div class="row">
+        <div class="row">
+            @{
+                foreach (var item in Model.RecentlyAdded)
+                {
+                    <div class="col-sm-2 hvr-shadow-radial">
+                                    <article class="card rounded">
+                                        <header class="title-header">
+                                            <h3 class="text-center">@(item.Title)</h3>
+                                        </header>
+                                        <a style="color:white;">
+                                            <div class="card-block">
+                                                <div class="img-card">
+                                                    <img src="~/img/@(item.Id).png" alt="@(item.Title)" class="w-100" />
+                                                    <div class="average-rating rounded">
+                                                        @Html.DrawStars(item.Rating)
+                                                    </div>
+                                                    <div class="view-detail" style="display:none;">
+                                                        <i class="fa fa-search fa-3x"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </article>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
