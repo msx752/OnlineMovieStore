@@ -14,5 +14,6 @@ namespace OnlineMovieStore.Data.Tables
         {
             
         }
+        public Basket Basket { get; set; }
     }
 }

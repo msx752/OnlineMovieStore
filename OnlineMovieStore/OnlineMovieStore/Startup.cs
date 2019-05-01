@@ -48,6 +48,8 @@ namespace OnlineMovieStore
             services.AddScoped<MovieCategoryManager>();
             services.AddScoped<MovieDirectorManager>();
             services.AddScoped<MovieWriterManager>();
+            services.AddScoped<BasketManager>();
+            services.AddScoped<UserManager>();
 
             services.AddControllersWithViews()
                 .AddNewtonsoftJson();

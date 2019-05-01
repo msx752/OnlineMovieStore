@@ -17,7 +17,8 @@ namespace OnlineMovieStore.Data
         public DbSet<Director> Directors { get; set; }
         public DbSet<MovieWriter> MovieWriters { get; set; }//for many to many relations
         public DbSet<MovieDirector> MovieDirectors { get; set; }//for many to many relations
-        public DbSet<MovieCategory> MovieCategories { get; set; }//for many to many relations
+        public DbSet<MovieCategory> MovieCategories { get; set; }//for many to many relations 
+        public DbSet<Basket> Baskets { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
