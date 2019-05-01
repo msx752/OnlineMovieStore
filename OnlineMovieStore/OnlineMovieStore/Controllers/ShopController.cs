@@ -10,6 +10,13 @@ namespace OnlineMovieStore.Controllers
     {
         public IActionResult Index()
         {
+            return this.RedirectToAction("Basket");
+        }
+        public IActionResult Basket()
+        {
+            if (!User.Identity.IsAuthenticated)
+                return this.Redirect("~/Identity/Account/Login");
+
             return View();
         }
     }
