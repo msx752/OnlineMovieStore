@@ -44,9 +44,5 @@ namespace OnlineMovieStore.Repositories
         {
             return _context.SaveChanges();
         }
-        public int SaveChanges()
-        {
-            return _context.SaveChanges();
-        }
     }
 }
