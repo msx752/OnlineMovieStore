@@ -22,7 +22,12 @@ namespace OnlineMovieStore.Repositories
             SaveChanges();
             return bst.Entity;
         }
-        public IEnumerable<PaymentHistory> Get(string userId)
+        public void Delete(PaymentHistory newPayment)
+        {
+            var bst = _context.Payments.Remove(newPayment);
+            SaveChanges();
+        }
+        public List<PaymentHistory> Get(string userId)
         {
             return _context.Payments
                 .Include(f => f.Movie)

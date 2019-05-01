@@ -63,6 +63,16 @@ namespace OnlineMovieStore.Controllers
             return this.RedirectToAction("Basket");
         }
         [Authorize]
+        public IActionResult ChargeBack(string Id)
+        {
+            var payment = PaymentRepo.Get(User.GetUserId(), Id);
+            if (payment!=null)
+            {
+                PaymentRepo.Delete(payment);
+            }
+            return this.RedirectToAction("PaymentHistory");
+        }
+        [Authorize]
         public IActionResult AddToBasket(string Id)
         {
             var movie = MovieRepo.Get(Id);
@@ -88,6 +98,12 @@ namespace OnlineMovieStore.Controllers
         [Authorize]
         public IActionResult BuyAll()
         {
+            string[] InBasketIds = BasketRepo.Get(User.GetUserId()).UserBasket.Ids.ToArray();
+            foreach (var item in InBasketIds)
+            {
+                var movie = MovieRepo.Get(item);
+                BuyItem(movie);
+            }
             return this.RedirectToAction("PaymentHistory");
         }
         [Authorize]
@@ -101,21 +117,25 @@ namespace OnlineMovieStore.Controllers
             var userPayments = PaymentRepo.Get(User.GetUserId());
             if (userPayments.FirstOrDefault(f => f.MovieId == movie.Id) == null)
             {
-                PaymentHistory newPayment = new PaymentHistory();
-                newPayment.MovieId = movie.Id;
-                newPayment.UserId = User.GetUserId();
-                newPayment.PaidUsdPrice = movie.UsdPrice;
-                PaymentRepo.Add(newPayment);
-                var InBaskets = BasketRepo.Get(User.GetUserId());
-                if (InBaskets.UserBasket.Ids.Contains(movie.Id))
-                {
-                    InBaskets.UserBasket.Ids.Remove(movie.Id);
-                    InBaskets.UserBasket = InBaskets.UserBasket;
-                    BasketRepo.SaveChanges();
-                }
-                PaymentRepo.SaveChanges();
+                BuyItem(movie);
             }
             return this.RedirectToAction("PaymentHistory");
+        }
+        public void BuyItem(Movie movie)
+        {
+            PaymentHistory newPayment = new PaymentHistory();
+            newPayment.MovieId = movie.Id;
+            newPayment.UserId = User.GetUserId();
+            newPayment.PaidUsdPrice = movie.UsdPrice;
+            PaymentRepo.Add(newPayment);
+            var InBaskets = BasketRepo.Get(User.GetUserId());
+            if (InBaskets.UserBasket.Ids.Contains(movie.Id))
+            {
+                InBaskets.UserBasket.Ids.Remove(movie.Id);
+                InBaskets.UserBasket = InBaskets.UserBasket;
+                BasketRepo.SaveChanges();
+            }
+            PaymentRepo.SaveChanges();
         }
     }
 }
