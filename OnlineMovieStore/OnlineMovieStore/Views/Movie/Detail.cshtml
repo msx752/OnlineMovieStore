@@ -1,0 +1,28 @@
+﻿@inject OnlineMovieStore.Repositories.MovieCategoryManager movieCatRepo
+@model OnlineMovieStore.Models.DetailViewModel
+
+<div class="card detail-shadow" style="">
+    <div class="row">
+        <div class="col-2 left">
+            <img src="~/img/@(Model.Movie.Id).png" alt="@(Model.Movie.Title)" class="card-img-top detail-img" style="width: 100%;" />
+        </div>
+        <div class="card-body col-10 right">
+            <h2 class="card-title">@(Model.Movie.Title)</h2>
+            <span><b>IMDB Rating: </b>@(Model.Movie.Rating.AverageRating / 10)</span><br />
+            <span><b>Number of Votes: </b>@(Model.Movie.Rating.NumVotes)</span><br />
+            <span><b>Year: </b>@(Model.Movie.StartYear)</span><br />
+            <span><b>Minutes: </b>@(Model.Movie.RuntimeMinutes)</span><br />
+            @{
+                var catgs= movieCatRepo.GetAll(Model.Movie.Id).Select(f => f.Category.Name).ToArray();
+                string categories = string.Join(", ", catgs);
+            }
+            <span><b>Categories: </b>@categories</span><br />
+            <span><b>Directors: </b>a</span><br />
+            <span><b>Writers: </b>a</span><br />
+            <p class="card-text"><span><b>Short Description: </b>@(Model.Movie.Description)</span></p>
+            <a href="#" class="btn btn-primary">Add To Basket</a>
+            <a href="#" class="btn btn-success">Buy</a>
+        </div>
+    </div>
+
+</div>

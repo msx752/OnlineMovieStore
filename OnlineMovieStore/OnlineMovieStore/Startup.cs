@@ -43,14 +43,15 @@ namespace OnlineMovieStore
 
             //dependency injections
             //services.AddScoped<ApplicationDbContext>();
-            services.AddScoped<IDataRepository<Movie>, MovieManager>();
-            services.AddScoped<IDataRepository<Category>, CategoryManager>();
+            services.AddScoped<MovieManager>();
+            services.AddScoped<CategoryManager>();
+            services.AddScoped<MovieCategoryManager>();
 
             services.AddControllersWithViews()
                 .AddNewtonsoftJson();
             services.AddRazorPages();
 
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

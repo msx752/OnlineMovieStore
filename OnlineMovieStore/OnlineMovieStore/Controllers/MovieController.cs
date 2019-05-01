@@ -12,9 +12,9 @@ namespace OnlineMovieStore.Controllers
 {
     public class MovieController : Controller
     {
-        public IDataRepository<Movie> MovieRepo { get; set; }
-        public IDataRepository<Category> CatRepo { get; set; }
-        public MovieController(IDataRepository<Movie> _movieRepo, IDataRepository<Category> _catRepo)
+        public MovieManager MovieRepo { get; set; }
+        public CategoryManager CatRepo { get; set; }
+        public MovieController(MovieManager _movieRepo, CategoryManager _catRepo)
         {
             MovieRepo = _movieRepo;
             CatRepo = _catRepo;
@@ -37,13 +37,15 @@ namespace OnlineMovieStore.Controllers
         }
 
         [Route("Movie/{Id}")]
-        public IActionResult ViewDetail(string Id)
+        public IActionResult Detail(string Id)
         {
-            return View();
+            DetailViewModel detail = new DetailViewModel();
+            detail.Movie = MovieRepo.Get(Id);
+            return View(detail);
         }
         public IActionResult Search(string searchText)
         {
-            var searchResult = MovieRepo.GetAll().Where(f=>f.Title.Contains(searchText,StringComparison.InvariantCultureIgnoreCase)).ToList();
+            var searchResult = MovieRepo.GetAll().Where(f => f.Title.Contains(searchText, StringComparison.InvariantCultureIgnoreCase)).ToList();
             return View(searchResult);
         }
         [Route("Movie/Filtered/{Id}")]
