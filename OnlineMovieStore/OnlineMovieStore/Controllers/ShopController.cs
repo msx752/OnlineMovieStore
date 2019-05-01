@@ -73,5 +73,13 @@ namespace OnlineMovieStore.Controllers
             }
             return this.RedirectToAction("Basket");
         }
+        public IActionResult PaymentHistory()
+        {
+            return View();
+        }
+        public IActionResult Buy(string Id)
+        {
+            return this.RedirectToAction("Basket");
+        }
     }
 }
