@@ -12,7 +12,7 @@ namespace OnlineMovieStore.Data.Tables
     {
         public User()
         {
-
+            PaymentHistory = new HashSet<PaymentHistory>();
         }
         private Basket _basket = null;
         public Basket Basket
@@ -30,5 +30,6 @@ namespace OnlineMovieStore.Data.Tables
                 _basket = value;
             }
         }
+      public  ICollection<PaymentHistory> PaymentHistory { get; set; }
     }
 }

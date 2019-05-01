@@ -79,6 +79,18 @@ namespace OnlineMovieStore.Data
              .HasForeignKey(s => s.WriterId);
             //
 
+            // many to many 
+            modelBuilder.Entity<PaymentHistory>().HasKey(f => new { f.MovieId, f.UserId });
+            modelBuilder.Entity<PaymentHistory>()
+              .HasOne<Movie>(s => s.Movie)
+              .WithMany(g => g.PaymentHistory)
+              .HasForeignKey(s => s.MovieId);
+            modelBuilder.Entity<PaymentHistory>()
+             .HasOne<User>(s => s.User)
+             .WithMany(g => g.PaymentHistory)
+             .HasForeignKey(s => s.UserId);
+
+            //
             modelBuilder.SeedCategories();
             modelBuilder.SeedDirectors();
             modelBuilder.SeedWriters();

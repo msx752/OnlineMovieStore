@@ -16,7 +16,9 @@ namespace OnlineMovieStore.Data.Tables
             Categories = new HashSet<MovieCategory>();
             MovieDirectors = new HashSet<MovieDirector>();
             MovieWriters = new HashSet<MovieWriter>();
+            PaymentHistory = new HashSet<PaymentHistory>();
         }
+        public ICollection<PaymentHistory> PaymentHistory { get; set; }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string Id { get; set; }
