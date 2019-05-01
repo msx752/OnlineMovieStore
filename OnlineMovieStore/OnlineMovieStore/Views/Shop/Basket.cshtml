@@ -1,31 +1,44 @@
-﻿@model OnlineMovieStore.Data.Tables.Basket
-@inject OnlineMovieStore.Repositories.MovieManager movieRepo
+﻿@model List<OnlineMovieStore.Data.Tables.Movie>
 @{
     ViewData["Title"] = "Basket";
 }
 
 <h1>Basket</h1>
 
-@if (@Model.UserBasket.Ids.Count > 0 || true)
+@if (@Model.Count > 0)
 {
     <div class="panel-body">
         <ul class="list-group">
-            <li class="list-group-item list-group-item-secondary">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-8">
-                            <span style="font-size:20px;margin-left:15px;"><b>Avatar</b></span>
-                        </div>
-                        <div class="col-3">
-                            <span> <b>10.10$</b></span>
-                        </div>
-                        <div class="col-1">
+            @{
+                decimal totalPrice = 0;
+                foreach (var item in Model)
+                {
+                    totalPrice += item.UsdPrice;
 
-                            <a href="#" class="trash"><i class="fas fa-trash-alt fa-2x"></i></a>
+                    <li class="list-group-item list-group-item-secondary" style="margin-bottom:20px;">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-1">
+                                    <img src="~/img/@(item.Id).png" alt="@(item.Title)" style="width:100%;" />
+                                </div>
+                                <div class="col-9">
+                                    <a style="color:black;" asp-area="" asp-controller="Movie" asp-action="Detail" asp-route-id="@(item.Id)">
+                                        <span style="font-size:20px;margin-left:15px;"><b>@(item.Title)</b></span>
+                                    </a>
+                                </div>
+                                <div class="col-1">
+                                    <span> <b>@(item.UsdPrice)$</b></span>
+                                </div>
+                                <div class="col-1">
+                                    <a href="#" class="trash"><i class="fas fa-trash-alt fa-2x"></i></a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </li>
+                    </li>
+
+                }
+
+            }
             <li class="list-group-item list-group-item-warning">
                 <div class="container">
                     <div class="row">
@@ -33,7 +46,7 @@
                             <span> <b>Total Price</b></span>
                         </div>
                         <div class="col-2">
-                            <span> <b>100.00$</b></span>
+                            <span> <b>@(totalPrice)$</b></span>
                         </div>
                         <div class="col-2">
                             <a href="#" class="btn btn-success">Buy All</a>

@@ -13,7 +13,7 @@
         {
 
             bskt = basketRepo.Add(new Basket() { UserId = User.GetUserId() });
-
+            
         }
         var basketItemCount = bskt.UserBasket.Ids.Count;
 

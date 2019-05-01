@@ -34,7 +34,12 @@ namespace OnlineMovieStore.Controllers
                 user.Basket = new Basket();
                 UserRepo.SaveChanges();
             }
-            return View(user.Basket);
+            List<Movie> movies = new List<Movie>();
+            foreach (var item in user.Basket.UserBasket.Ids)
+            {
+                movies.Add(MovieRepo.Get(item));
+            }
+            return View(movies);
         }
         public IActionResult AddToBasket(string Id)
         {
