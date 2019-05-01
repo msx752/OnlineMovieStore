@@ -27,15 +27,16 @@
             <span><b>Categories: </b>@categories</span><br />
             <span><b>Directors: </b>@directors</span><br />
             <span><b>Writers: </b>@writers</span><br /><br />
-            <p class="card-text"><span><b>Short Description: </b>@(Model.Movie.Description)</span></p>
+            <p class="card-text"><span><b>Short Description: </b>@(Model.Movie.Description)</span></p><br />
+            <p><b>Price: </b><span>@(Model.Movie.UsdPrice)<b>$</b></span></p>
             @if (User.Identity.IsAuthenticated)
             {
                 <a href="#" class="btn btn-primary">Add To Basket</a>
                 <a href="#" class="btn btn-success">Buy</a>
             }
-            else 
+            else
             {
-            <p>you must be <a asp-area="Identity" asp-page="/Account/Login"><b>logged in</b></a>.</p>
+                <p>you must be <a asp-area="Identity" asp-page="/Account/Login"><b>logged in</b></a>.</p>
             }
         </div>
     </div>
