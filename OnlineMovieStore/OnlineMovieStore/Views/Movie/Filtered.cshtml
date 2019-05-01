@@ -14,7 +14,7 @@
                         <header class="title-header">
                             <h3 class="text-center">@(item.Title)</h3>
                         </header>
-                        <a style="color:white;">
+                        <a style="color:white;" asp-area="" asp-controller="Movie" asp-action="Detail" asp-route-id="@(item.Id)">
                             <div class="card-block">
                                 <div class="img-card">
                                     <img src="~/img/@(item.Id).png" alt="@(item.Title)" class="w-100" />

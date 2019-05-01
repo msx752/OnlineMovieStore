@@ -1,4 +1,6 @@
 ﻿@inject OnlineMovieStore.Repositories.MovieCategoryManager movieCatRepo
+@inject OnlineMovieStore.Repositories.MovieDirectorManager movieDirectorRepo
+@inject OnlineMovieStore.Repositories.MovieWriterManager movieWriterRepo
 @model OnlineMovieStore.Models.DetailViewModel
 
 <div class="card detail-shadow" style="">
@@ -13,15 +15,28 @@
             <span><b>Year: </b>@(Model.Movie.StartYear)</span><br />
             <span><b>Minutes: </b>@(Model.Movie.RuntimeMinutes)</span><br />
             @{
-                var catgs= movieCatRepo.GetAll(Model.Movie.Id).Select(f => f.Category.Name).ToArray();
+                var catgs = movieCatRepo.Get(Model.Movie.Id).Select(f => f.Category.Name).ToArray();
                 string categories = string.Join(", ", catgs);
+
+                var dirs = movieDirectorRepo.Get(Model.Movie.Id).Select(f => f.Director.FullName).ToArray();
+                string directors = string.Join(", ", dirs);
+
+                var wirs = movieWriterRepo.Get(Model.Movie.Id).Select(f => f.Writer.FullName).ToArray();
+                string writers = string.Join(", ", wirs);
             }
             <span><b>Categories: </b>@categories</span><br />
-            <span><b>Directors: </b>a</span><br />
-            <span><b>Writers: </b>a</span><br />
+            <span><b>Directors: </b>@directors</span><br />
+            <span><b>Writers: </b>@writers</span><br /><br />
             <p class="card-text"><span><b>Short Description: </b>@(Model.Movie.Description)</span></p>
-            <a href="#" class="btn btn-primary">Add To Basket</a>
-            <a href="#" class="btn btn-success">Buy</a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a href="#" class="btn btn-primary">Add To Basket</a>
+                <a href="#" class="btn btn-success">Buy</a>
+            }
+            else 
+            {
+            <p>[ you must be <a asp-area="Identity" asp-page="/Account/Login"><b>logged in</b></a> for take an action ]</p>
+            }
         </div>
     </div>
 

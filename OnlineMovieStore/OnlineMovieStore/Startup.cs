@@ -42,10 +42,12 @@ namespace OnlineMovieStore
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             //dependency injections
-            //services.AddScoped<ApplicationDbContext>();
+            services.AddScoped<ApplicationDbContext>();
             services.AddScoped<MovieManager>();
             services.AddScoped<CategoryManager>();
             services.AddScoped<MovieCategoryManager>();
+            services.AddScoped<MovieDirectorManager>();
+            services.AddScoped<MovieWriterManager>();
 
             services.AddControllersWithViews()
                 .AddNewtonsoftJson();

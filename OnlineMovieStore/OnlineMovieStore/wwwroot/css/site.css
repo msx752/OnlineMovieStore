@@ -159,6 +159,7 @@ body {
     -moz-box-shadow: -1px 3px 19px 7px rgba(0,0,0,0.75) !important;
     box-shadow: -1px 3px 19px 7px rgba(0,0,0,0.75) !important;
 }
-.detail-img{
-    padding:5px;
+.detail-img {
+    padding: 5px;
+    position: absolute !important;
 }

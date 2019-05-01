@@ -23,7 +23,7 @@ namespace OnlineMovieStore.Repositories
                 .Include(f => f.Category)
                 .FirstOrDefault(e => e.CategoryId == id);
         }
-        public IEnumerable<MovieCategory> GetAll(string movieId)
+        public IEnumerable<MovieCategory> Get(string movieId)
         {
             return _context.MovieCategories
                 .Include(f => f.Movie)
