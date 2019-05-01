@@ -30,7 +30,7 @@
                                     <span> <b  style="font-size:18px;">@(item.UsdPrice)$</b></span>
                                 </div>
                                 <div class="col-1">
-                                    <a href="#" class="trash"><i class="fas fa-trash-alt fa-2x"></i></a>
+                                    <a class="trash" asp-area="" asp-controller="Shop" asp-action="RemoveFromBasket" asp-route-id="@(item.Id)"><i class="fas fa-trash-alt fa-2x"></i></a>
                                 </div>
                             </div>
                         </div>

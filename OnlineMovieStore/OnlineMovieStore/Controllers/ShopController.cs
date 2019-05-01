@@ -41,6 +41,22 @@ namespace OnlineMovieStore.Controllers
             }
             return View(movies);
         }
+        public IActionResult RemoveFromBasket(string Id)
+        {
+            var movie = MovieRepo.Get(Id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+            var usrBasket = BasketRepo.Get(User.GetUserId());
+            if (usrBasket.UserBasket.Ids.Contains(Id))
+            {
+                usrBasket.UserBasket.Ids.Remove(Id);
+                usrBasket.UserBasket = usrBasket.UserBasket;
+                BasketRepo.SaveChanges();
+            }
+            return this.RedirectToAction("Basket");
+        }
         public IActionResult AddToBasket(string Id)
         {
             var movie = MovieRepo.Get(Id);
