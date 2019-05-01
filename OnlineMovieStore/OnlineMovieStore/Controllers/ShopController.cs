@@ -82,7 +82,8 @@ namespace OnlineMovieStore.Controllers
         [Authorize]
         public IActionResult PaymentHistory()
         {
-            return View();
+            var userPayments = PaymentRepo.Get(User.GetUserId());
+            return View(userPayments);
         }
         [Authorize]
         public IActionResult BuyAll()
@@ -97,7 +98,23 @@ namespace OnlineMovieStore.Controllers
             {
                 return NotFound();
             }
-            PaymentRepo.Get(User.GetUserId());
+            var userPayments = PaymentRepo.Get(User.GetUserId());
+            if (userPayments.FirstOrDefault(f => f.MovieId == movie.Id) == null)
+            {
+                PaymentHistory newPayment = new PaymentHistory();
+                newPayment.MovieId = movie.Id;
+                newPayment.UserId = User.GetUserId();
+                newPayment.PaidUsdPrice = movie.UsdPrice;
+                PaymentRepo.Add(newPayment);
+                var InBaskets = BasketRepo.Get(User.GetUserId());
+                if (InBaskets.UserBasket.Ids.Contains(movie.Id))
+                {
+                    InBaskets.UserBasket.Ids.Remove(movie.Id);
+                    InBaskets.UserBasket = InBaskets.UserBasket;
+                    BasketRepo.SaveChanges();
+                }
+                PaymentRepo.SaveChanges();
+            }
             return this.RedirectToAction("PaymentHistory");
         }
     }

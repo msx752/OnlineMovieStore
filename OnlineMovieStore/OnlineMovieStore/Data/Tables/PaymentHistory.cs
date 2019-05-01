@@ -7,6 +7,10 @@ namespace OnlineMovieStore.Data.Tables
 {
     public class PaymentHistory
     {
+        public PaymentHistory()
+        {
+            TimeUtc = DateTimeOffset.UtcNow;
+        }
         public string MovieId { get; set; }
         public Movie Movie { get; set; }
 
