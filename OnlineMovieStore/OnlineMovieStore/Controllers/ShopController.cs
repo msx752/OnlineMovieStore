@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineMovieStore.Data.Tables;
 using OnlineMovieStore.Repositories;
@@ -10,19 +11,22 @@ namespace OnlineMovieStore.Controllers
 {
     public class ShopController : Controller
     {
+        public PaymentHistoryManager PaymentRepo { get; set; }
         public MovieManager MovieRepo { get; set; }
         public BasketManager BasketRepo { get; set; }
         public UserManager UserRepo { get; set; }
-        public ShopController(BasketManager _basketRepo, UserManager _userRepo, MovieManager _movieRepo)
+        public ShopController(BasketManager _basketRepo, UserManager _userRepo, MovieManager _movieRepo, PaymentHistoryManager _paymentRepo)
         {
             BasketRepo = _basketRepo;
             UserRepo = _userRepo;
             MovieRepo = _movieRepo;
+            PaymentRepo = _paymentRepo;
         }
         public IActionResult Index()
         {
             return this.RedirectToAction("Basket");
         }
+        [Authorize]
         public IActionResult Basket()
         {
             if (!User.Identity.IsAuthenticated)
@@ -41,6 +45,7 @@ namespace OnlineMovieStore.Controllers
             }
             return View(movies);
         }
+        [Authorize]
         public IActionResult RemoveFromBasket(string Id)
         {
             var movie = MovieRepo.Get(Id);
@@ -57,6 +62,7 @@ namespace OnlineMovieStore.Controllers
             }
             return this.RedirectToAction("Basket");
         }
+        [Authorize]
         public IActionResult AddToBasket(string Id)
         {
             var movie = MovieRepo.Get(Id);
@@ -73,16 +79,25 @@ namespace OnlineMovieStore.Controllers
             }
             return this.RedirectToAction("Basket");
         }
+        [Authorize]
         public IActionResult PaymentHistory()
         {
             return View();
         }
+        [Authorize]
         public IActionResult BuyAll()
         {
             return this.RedirectToAction("PaymentHistory");
         }
+        [Authorize]
         public IActionResult Buy(string Id)
         {
+            var movie = MovieRepo.Get(Id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+            PaymentRepo.Get(User.GetUserId());
             return this.RedirectToAction("PaymentHistory");
         }
     }
