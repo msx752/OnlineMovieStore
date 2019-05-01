@@ -2,6 +2,7 @@
 @inject OnlineMovieStore.Repositories.MovieDirectorManager movieDirectorRepo
 @inject OnlineMovieStore.Repositories.MovieWriterManager movieWriterRepo
 @inject OnlineMovieStore.Repositories.BasketManager basketRepo
+@inject OnlineMovieStore.Repositories.PaymentHistoryManager paymentRepo
 @model OnlineMovieStore.Models.DetailViewModel
 
 <div class="card detail-shadow" style="">
@@ -32,16 +33,25 @@
             <p><b>Price: </b><span>@(Model.Movie.UsdPrice)<b>$</b></span></p>
             @if (User.Identity.IsAuthenticated)
             {
-                var bskt = basketRepo.Get(User.GetUserId());
-                if (!bskt.UserBasket.Ids.Contains(Model.Movie.Id))
+                var AlreadyHave = paymentRepo.Get(User.GetUserId(), Model.Movie.Id) != null;
+                if (!AlreadyHave)
                 {
-                    <a class="btn btn-primary" asp-area="" asp-controller="Shop" asp-action="AddToBasket" asp-route-id="@(Model.Movie.Id)">Add To Basket</a>
+                    var bskt = basketRepo.Get(User.GetUserId());
+                    if (!bskt.UserBasket.Ids.Contains(Model.Movie.Id))
+                    {
+                        <a class="btn btn-primary" asp-area="" asp-controller="Shop" asp-action="AddToBasket" asp-route-id="@(Model.Movie.Id)">Add To Basket</a>
+                    }
+                    else
+                    {
+                        <button disabled class="btn btn-secondary">Add To Basket</button>
+                    }
+                    <a class="btn btn-success" asp-area="" asp-controller="Shop" asp-action="Buy" asp-route-id="@(Model.Movie.Id)">Buy</a>
                 }
                 else
                 {
-                    <button disabled class="btn btn-primary">Add To Basket</button>
+                    <button disabled class="btn btn-secondary">Add To Basket</button>
+                    <button disabled class="btn btn-secondary">Buy</button>
                 }
-                <a  class="btn btn-success" asp-area="" asp-controller="Shop" asp-action="Buy" asp-route-id="@(Model.Movie.Id)">Buy</a>
             }
             else
             {

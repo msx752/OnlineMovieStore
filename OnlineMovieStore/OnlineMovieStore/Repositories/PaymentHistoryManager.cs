@@ -29,6 +29,13 @@ namespace OnlineMovieStore.Repositories
                 .Include(f => f.User)
                 .Where(f => f.UserId == userId).ToList();
         }
+        public PaymentHistory Get(string userId, string movieId)
+        {
+            return _context.Payments
+                .Include(f => f.Movie)
+                .Include(f => f.User)
+                .FirstOrDefault(f => f.UserId == userId && f.MovieId == movieId);
+        }
         public IEnumerable<PaymentHistory> GetAll()
         {
             return _context.Payments
