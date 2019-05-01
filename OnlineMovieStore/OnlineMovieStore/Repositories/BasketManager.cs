@@ -39,5 +39,9 @@ namespace OnlineMovieStore.Repositories
         {
             throw new NotImplementedException();
         }
+        public int SaveChanges()
+        {
+            return _context.SaveChanges();
+        }
     }
 }
