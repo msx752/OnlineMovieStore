@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-    <UserSecretsId>aspnet-OnlineMovieStore-AC25E9C7-5F88-4D82-8FB4-D32D2D90826B</UserSecretsId>
+    <UserSecretsId>OnlineMovieStore</UserSecretsId>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
   </PropertyGroup>
 
